@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <div class="login-form">
-                <h1 class="h1" style="color:#000;fontSize:28px;">员工健康管理系统注册</h1>
+                <h1 class="h1" style="color:#000;fontSize:28px;">智能健康检测系统注册</h1>
                 <el-form class="rgs-form">
                     <el-form-item label="账号" class="input">
                         <el-input v-model="ruleForm.username" autocomplete="off" placeholder="账号"  />

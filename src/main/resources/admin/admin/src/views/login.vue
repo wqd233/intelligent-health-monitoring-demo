@@ -4,7 +4,7 @@
 
             <div :class="2 == 1 ? 'left' : 2 == 2 ? 'left center' : 'left right'" style="backgroundColor: rgba(255, 255, 255, 0.15)">
                 <el-form class="login-form" label-position="left" :label-width="1 == 3 ? '56px' : '0px'">
-                    <div class="title-container"><h3 class="title" style="color: var(--publicMainColor)">员工健康管理系统</h3></div>
+                    <div class="title-container"><h3 class="title" style="color: var(--publicMainColor)">智能健康检测系统</h3></div>
                     <el-form-item :label="1 == 3 ? '用户名' : ''" :class="'style'+1">
                         <span v-if="1 != 3" class="svg-container" style="color:rgba(18, 18, 18, 1);line-height:44px"><svg-icon icon-class="user" /></span>
                         <el-input placeholder="请输入用户名" name="username" type="text" v-model="rulesForm.username" />

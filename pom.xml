@@ -13,7 +13,7 @@
     <artifactId>intelligent-health-monitoring-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>intelligent-health-monitoring-demo</name>
-    <description>健康系统</description>
+    <description>智能健康检测系统</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -164,6 +164,9 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+
+        
 
 
 

@@ -1,5 +1,7 @@
 package com;
 
+import java.util.concurrent.TimeUnit;
+
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,15 +11,16 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 @ServletComponentScan(value = "com.ServletContextListener")
-@MapperScan(basePackages = {"com.dao"})
-public class intelligenthealthmonitoringdemoApplication extends SpringBootServletInitializer{
+@MapperScan(basePackages = { "com.dao" })
+public class intelligenthealthmonitoringdemoApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(intelligenthealthmonitoringdemoApplication.class, args);
 	}
-	
+
 	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder applicationBuilder) {
-        return applicationBuilder.sources(intelligenthealthmonitoringdemoApplication.class);
-    }
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder applicationBuilder) {
+		return applicationBuilder.sources(intelligenthealthmonitoringdemoApplication.class);
+	}
+
 }

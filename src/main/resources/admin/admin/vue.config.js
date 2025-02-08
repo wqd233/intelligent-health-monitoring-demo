@@ -31,6 +31,11 @@ lintOnSave: false,
         host: "0.0.0.0", //指定使用一个 host。默认是 localhost，这里默认值即可
         port: 8081, //指定端口
         hot: true, // 开启热更新
+
+        watchOptions: {
+              poll: true, // 开启文件系统监听
+            },
+
         https: false, // 是否开启https模式
         proxy: { // 请求代理服务器
             '/intelligent-health-monitoring-demo': { //带上api前缀的

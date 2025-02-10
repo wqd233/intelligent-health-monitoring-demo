@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>忘记密码</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../xznstatic/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../../xznstatic/css/login.css" />
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="app" class="login">
+        <form id="loginForm" class="login-form">
+            <div class="msg-warn">忘记密码</div>
+            <div class="form-item">
+                <input class="layui-input common-style" type="text" v-model="username" required placeholder="请输入账号">
+            </div>
+            <div class="form-item">
+                <input class="layui-input common-style" type="email" v-model="email" required placeholder="请输入邮箱">
+                <!-- 换行 -->
+                <br>
+                <button type="button" class="layui-btn layui-btn-normal btn-code" @click="sendCode"
+                    :disabled="codeButtonDisabled">
+                    {{ codeButtonText }}
+                </button>
+            </div>
+            <div class="form-item">
+                <input class="layui-input common-style" type="text" v-model="code" required placeholder="请输入邮箱验证码">
+            </div>
+            <button type="button" class="layui-btn layui-btn-fluid layui-btn-danger btn-submit" @click="resetPassword">
+                重置密码
+            </button>
+            <p style="color: var(--publicMainColor); text-align: center; font-size: 12px;">
+                <a href="javascript:void(0);" @click="registerClick('yonghu')">注册用户</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="../../layui/layui.js"></script>
+    <script src="../../js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                username: '',
+                email: '',
+                code: '',
+                generatedCode: '', // 存储前端生成的验证码
+                codeButtonText: '获取验证码',
+                codeButtonDisabled: false,
+                countdown: 60
+            },
+            methods: {
+                // 生成6位数字验证码
+                generateCode() {
+                    return Math.floor(100000 + Math.random() * 900000).toString();
+                },
+
+                // 发送验证码
+                sendCode() {
+                    if (!this.email) {
+                        alert('请输入邮箱！');
+                        return;
+                    }
+
+                    // 生成验证码并存储
+                    this.generatedCode = this.generateCode();
+                    console.log('验证码：', this.generatedCode); // 调试用
+
+                    // 邮件 API 地址（替换 email 为用户输入的邮箱）
+                    let apiUrl = `http://api.mmp.cc/api/mail?email=${this.email}&key=fybjagiuzrqsbajf&mail=2825463258@qq.com&title=验证码&name=系统通知&text=您的验证码是：${this.generatedCode}，有效期5分钟。`;
+
+                    // 发送请求
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.code === 200) {
+                                alert('验证码已发送，请检查邮箱！');
+                                this.startCountdown();
+                            } else {
+                                alert('验证码发送失败，请稍后重试！');
+                            }
+                        })
+                        .catch(error => {
+                            alert('网络错误，请检查您的网络连接！');
+                        });
+                },
+
+                // 启动倒计时
+                startCountdown() {
+                    this.codeButtonDisabled = true;
+                    this.codeButtonText = `重新获取(${this.countdown}s)`;
+                    let interval = setInterval(() => {
+                        this.countdown--;
+                        this.codeButtonText = `重新获取(${this.countdown}s)`;
+                        if (this.countdown <= 0) {
+                            clearInterval(interval);
+                            this.codeButtonDisabled = false;
+                            this.codeButtonText = '获取验证码';
+                            this.countdown = 60; // 重置倒计时
+                        }
+                    }, 1000);
+                },
+
+                // 重置密码
+                resetPassword() {
+                    if (!this.username || !this.email || !this.code) {
+                        alert('请填写所有信息！');
+                        return;
+                    }
+
+                    // 验证验证码是否正确
+                    if (this.code !== this.generatedCode) {
+                        alert('验证码错误，请重新输入！');
+                        return;
+                    }
+
+                    // 假设这里执行重置密码的逻辑（前端模拟）
+                    alert('验证码正确，密码重置成功！（仅模拟，无实际更改）');
+
+                    // 重置表单
+                    this.username = '';
+                    this.email = '';
+                    this.code = '';
+                    this.generatedCode = '';
+                },
+
+                // 注册点击事件
+                registerClick(tablename) {
+                    window.location.href = `../${tablename}/register.html?tablename=${tablename}`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

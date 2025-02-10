@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <title>数据分析</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../layui/css/layui.css">
+    <link rel="stylesheet" href="../../xznstatic/css/common.css" />
+    <link rel="stylesheet" href="../../xznstatic/css/style.css" />
+    <script type="text/javascript" src="../../xznstatic/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../xznstatic/js/jquery.SuperSlide.2.1.1.js"></script>
+    <link rel="stylesheet" href="../../xznstatic/css/bootstrap.min.css" />
+    <script src="../../xznstatic/js/echarts.min.js"></script>
+
+    <link rel="stylesheet" href="../../css/theme.css" />
+</head>
+<style>
+    .health-advice {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #333;
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .center-container {
+        width: 1200px;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .prolist .left_nav {
+        background: #fff;
+        width: 220px;
+    }
+
+    .prolist .left_nav .dlx1 {
+        padding: 15px 0;
+        padding-left: 20px;
+        background: var(--publicMainColor);
+        color: #fff;
+    }
+
+    .prolist .left_nav .dlx1 dt {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .prolist .left_nav .dlx1 dd {
+        padding-top: 5px;
+        font-size: 14px;
+        font-weight: 200;
+    }
+
+    .prolist .left_nav .dlx2 {
+        padding: 15px 0;
+        padding-left: 20px;
+        background: var(--publicMainColor);
+        color: #fff;
+    }
+
+    .prolist .left_nav .dlx2 dt {
+        font-size: 14px;
+    }
+
+    .prolist .left_nav .dlx2 dd {
+        padding-top: 5px;
+        font-size: 22px;
+        color: var(--publicSubColor);
+        font-family: impact;
+    }
+
+    .prolist .left_nav ul {
+        padding: 20px;
+    }
+
+    .prolist .left_nav ul li {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .prolist .left_nav ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .prolist .left_nav ul li {
+        background-color: var(--publicSubColor);
+        display: block;
+        border: 1px solid #ddd;
+        padding: 15px 10px;
+        color: #666;
+        font-size: 12px;
+    }
+
+    .prolist .left_nav ul li i {
+        color: var(--publicMainColor);
+        margin-right: 10px;
+    }
+
+    .prolist .left_nav ul li:hover {
+        border: 1px solid var(--publicMainColor);
+        background: var(--publicMainColor);
+        color: #fff;
+    }
+
+    .prolist .left_nav ul li:hover i {
+        color: var(--publicSubColor);
+    }
+
+    .onclickbiaoqian {
+        color: #fff !important;
+        background-color: var(--publicMainColor) !important;
+    }
+
+    .onclickbiaoqian i {
+        color: var(--publicSubColor) !important;
+    }
+</style>
+
+<body class='bodyClass'>
+    <div id="app">
+        <el-dialog title="弹出内容" :visible.sync="showContentModal" :modal-append-to-body="false">
+            <div class="content" style="word-break: break-all;" v-html="showContent">
+            </div>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="showContentModal = false">关 闭</el-button>
+            </div>
+        </el-dialog>
+        <!-- 标题 -->
+
+
+        <!-- 标题 -->
+        <div class="center-container">
+            <!-- 个人中心菜单 config.js-->
+            <div class="prolist">
+                <div class="left_nav">
+                    <dl class="dlx1">
+                        <dt>数据分析</dt>
+                        <dd>data analysis</dd>
+                    </dl>
+                    <ul>
+                        <li v-for="(item,index) in centerMenu" v-bind:key="index" @click="jump(item.url)"
+                            :class="item.url=='../jiankangrizhi/list.html'?'onclickbiaoqian':''"><i
+                                class="layui-icon">&#xe6b1;</i>{{item.name}}</li>
+                    </ul>
+                </div>
+            </div> <!-- 个人中心菜单 -->
+            <div class="right-container sub_borderColor" style="overflow: auto"
+                :style='{"padding":"20px","boxShadow":"0px rgba(255,0,0,.8)","margin":"0","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid","width":"80%"}'>
+                <div
+                    style="display: flex;height: 60px;align-items: center;margin-left: 15px;justify-content: space-between">
+                </div>
+                <!-- 数据分析图 块 -->
+                <div id="chart" style="width: 100%;height:400px;"></div>
+                <!-- 健康评估报告 块 -->
+                <div id="chart2" style="width: 100%;height:100px;"></div>
+
+                <table class="layui-table" lay-skin="nob" style="width: 1500px;overflow: auto">
+                    <thead>
+                        <tr>
+                            <!-- 级联表 -->
+                            <!-- 当前表 -->
+                            <th>健康日志编号list1</th>
+                            <th>健康日志名称</th>
+                            <th>健康日志类型</th>
+                            <th>睡眠情况</th>
+                            <th>饮酒</th>
+                            <th>吸烟</th>
+                            <th>高压</th>
+                            <th>低压</th>
+                            <th>身高(m)</th>
+                            <th>体重(kg)</th>
+                            <th>状态</th>
+                            <th>日志内容</th>
+                            <th>所属日期</th>
+                            <th>录入时间</th>
+                            <th>所需热量(千卡)</th>
+                            <th>BMI值</th>
+                            <th>推荐饭食</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in dataList" v-bind:key="index">
+                            <!-- 级联表 -->
+                            <td>{{item.jiankangrizhiUuidNumber}}</td>
+                            <td>{{item.jiankangrizhiName}}</td>
+                            <td>{{item.jiankangrizhiValue}}</td>
+                            <td>{{item.shuimianValue}}</td>
+                            <td>{{item.yinjiuValue}}</td>
+                            <td>{{item.xiyanValue}}</td>
+                            <td>{{item.gaoya}}</td>
+                            <td>{{item.diya}}</td>
+                            <td>{{item.shengao}}</td>
+                            <td>{{item.tizhong}}</td>
+                            <td>{{item.zhuangtaiValue}}</td>
+                            <td><button v-if="item.jiankangrizhiContent!=null&&item.jiankangrizhiContent!=''"
+                                    @click="showContentFunction(item.jiankangrizhiContent)" type="button"
+                                    class="layui-btn layui-btn-success">点击查看</button></td>
+                            <td>{{item.suoshuriqiTime}}</td>
+                            <td>{{item.insertTime}}</td>
+                            <td>{{item.reliang}}</td>
+                            <td>{{item.bmiZhi}}</td>
+                            <td>{{item.tuijianValue}}</td>
+                            <td style="width: 100px;">
+                                <!--
+                            <button @click="jump('../jiankangrizhi/add.html?jiankangrizhiId='+item.id)" type="button" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-warm">
+                                 修改
+                            </button>
+                        -->
+                                <button @click="deleteData(item)" type="button"
+                                    class="layui-btn layui-btn-sm layui-btn-radius layui-btn-warm">
+                                    <i class="layui-icon">&#xe640;</i> 删除
+                                </button>
+                                <button v-if="item.jiankangrizhiTypes==1 && false" @click="wuyong(item.id)"
+                                    type="button" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-warm">
+                                    无用按钮
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pager" id="pager" :style="{textAlign:'center'}"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../xznstatic/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../xznstatic/js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../layui/layui.js"></script>
+    <script src="../../js/vue.js"></script>
+    <!-- 引入element组件库 -->
+    <script src="../../xznstatic/js/element.min.js"></script>
+    <!-- 引入element样式 -->
+    <link rel="stylesheet" href="../../xznstatic/css/element.min.css">
+    <script src="../../js/config.js"></script>
+    <script src="../../modules/config.js"></script>
+    <script src="../../js/utils.js"></script>
+
+    <script type="text/javascript">
+        Vue.prototype.myFilters = function (msg) {
+            if (msg == null || msg == "") {
+                return "";
+            } else if (msg.length > 20) {
+                msg.replace(/\n/g, "<br>");
+                return msg.substring(0, 30) + "......";
+            } else {
+                return msg.replace(/\n/g, "<br>");
+            }
+        };
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                userId: localStorage.getItem("userid"),//当前登录人的id
+                sessionTable: localStorage.getItem("userTable"),//登录账户所在表名
+                role: localStorage.getItem("role"),//权限
+                user: {},//当前登录用户信息
+                //小菜单
+                centerMenu: centerMenu,
+                //项目路径
+                baseUrl: "",
+                //弹出内容模态框
+                showContentModal: false,
+                showContent: "",
+                jiankangrizhiTypesList: [],
+                shuimianTypesList: [],
+                yinjiuTypesList: [],
+                xiyanTypesList: [],
+                zhuangtaiTypesList: [],
+                tuijianTypesList: [],
+                //查询条件
+                searchForm: {
+                    page: 1
+                    , limit: 8
+                    , sort: "id"//字段
+                    , order: "desc"//asc desc
+
+                    , yonghuId: localStorage.getItem('userid')//只能查询自己
+                    , jiankangrizhiUuidNumber: ""
+                    , jiankangrizhiName: ""
+                    , jiankangrizhiTypes: ""
+                    , shuimianTypes: ""
+                    , yinjiuTypes: ""
+                    , xiyanTypes: ""
+                    , zhuangtaiTypes: ""
+                    , jiankangrizhiContent: ""
+                    , tuijianTypes: ""
+                },
+
+                dataList: [],
+                dataList2: [],
+
+            },
+            filters: {
+                subString: function (val) {
+                    if (val) {
+                        val = val.replace(/<[^<>]+>/g, '').replace(/undefined/g, '');
+                        if (val.length > 60) {
+                            val = val.substring(0, 60);
+                            val += '...';
+                        }
+                        return val;
+                    }
+                    return '';
+                }
+            },
+            computed: {
+            },
+            methods: {
+                isAuth(tablename, button) {
+                    return isFrontAuth(tablename, button);
+                },
+                jump(url) {
+                    jump(url);
+                },
+                jumpCheck(url, check1, check2) {
+                    if (check1 == "2" || check1 == 2) {//级联表的逻辑删除字段[1:未删除 2:已删除]
+                        layui.layer.msg("已经被删除", {
+                            time: 2000,
+                            icon: 2
+                        });
+                        return false;
+                    }
+                    if (check2 == "2" || check2 == 2) {//是否下架[1:上架 2:下架]
+                        layui.layer.msg("已经下架", {
+                            time: 2000,
+                            icon: 2
+                        });
+                        return false;
+                    }
+                    this.jump(url);
+                },
+                showContentFunction(content) {
+                    this.showContentModal = true;
+                    this.showContent = content.replaceAll("src=\"upload/", "src=\"" + this.baseUrl + "upload/");
+                },
+                wuyong(id) {
+                    var mymessage = confirm("确定要    吗？"); if (!mymessage) { return false; }
+                    layui.http.requestJson(`jiankangrizhi/update`, 'post', {
+                        id: id,
+                        //                    jiankangrizhiTypes:1,
+                    }, function (res) {
+                        if (res.code == 0) {
+                            layui.layer.msg('操作成功', { time: 2000, icon: 6 }, function () { window.location.reload(); });
+                        } else {
+                            layui.layer.msg(res.msg, { time: 5000, icon: 5 });
+                        }
+                    });
+                },
+                deleteData(data) {
+                    var mymessage = confirm("确定要删除这条数据吗？");
+                    if (!mymessage) {
+                        return false;
+                    }
+                    // 删除信息
+                    layui.http.requestJson(`jiankangrizhi/delete`, 'post', [data.id], (res) => {
+                        if (res.code == 0) {
+                            layer.msg('操作成功', {
+                                time: 2000,
+                                icon: 6
+                            });
+                            window.location.reload();
+                        } else {
+                            layer.msg(res.msg, {
+                                time: 2000,
+                                icon: 2
+                            });
+                        }
+                    });
+                },
+
+            }
+        });
+
+        layui.use(['layer', 'element', 'carousel', 'laypage', 'http', 'jquery', 'laydate', 'tinymce'], function () {
+            var layer = layui.layer;
+            var element = layui.element;
+            var carousel = layui.carousel;
+            var laypage = layui.laypage;
+            var http = layui.http;
+            var laydate = layui.laydate;
+            var tinymce = layui.tinymce;
+            window.jQuery = window.$ = jquery = layui.jquery;
+
+            localStorage.setItem("goUtl", "./pages/jiankangrizhi/list.html")
+
+            vue.baseUrl = http.baseurl
+
+            let table = localStorage.getItem("userTable");
+            if (table) {
+                http.request(table + "/session", 'get', {}, function (data) {
+                    vue.user = data.data;
+                });
+            }
+
+
+
+            //健康日志类型的动态搜素
+            $(document).on("click", ".thisTableType-search", function (e) {
+                vue.searchForm.jiankangrizhiTypes = $(this).attr('index');
+                pageList();
+            });
+
+
+            //当前表的 健康日志类型 字段 字典表查询
+            jiankangrizhiTypesSelect();
+            //当前表的 睡眠情况 字段 字典表查询
+            shuimianTypesSelect();
+            //当前表的 饮酒 字段 字典表查询
+            yinjiuTypesSelect();
+            //当前表的 吸烟 字段 字典表查询
+            xiyanTypesSelect();
+            //当前表的 状态 字段 字典表查询
+            zhuangtaiTypesSelect();
+            //当前表的 推荐饭食 字段 字典表查询
+            tuijianTypesSelect();
+            //当前表的 健康日志类型 字段 字典表查询方法
+            function jiankangrizhiTypesSelect() {
+                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=jiankangrizhi_types", 'get', {}, function (res) {
+                    if (res.code == 0) {
+                        vue.jiankangrizhiTypesList = res.data.list;
+                    }
+                });
+            }
+            //当前表的 睡眠情况 字段 字典表查询方法
+            function shuimianTypesSelect() {
+                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=shuimian_types", 'get', {}, function (res) {
+                    if (res.code == 0) {
+                        vue.shuimianTypesList = res.data.list;
+                    }
+                });
+            }
+            //当前表的 饮酒 字段 字典表查询方法
+            function yinjiuTypesSelect() {
+                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=yinjiu_types", 'get', {}, function (res) {
+                    if (res.code == 0) {
+                        vue.yinjiuTypesList = res.data.list;
+                    }
+                });
+            }
+            //当前表的 吸烟 字段 字典表查询方法
+            function xiyanTypesSelect() {
+                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=xiyan_types", 'get', {}, function (res) {
+                    if (res.code == 0) {
+                        vue.xiyanTypesList = res.data.list;
+                    }
+                });
+            }
+            //当前表的 状态 字段 字典表查询方法
+            function zhuangtaiTypesSelect() {
+                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=zhuangtai_types", 'get', {}, function (res) {
+                    if (res.code == 0) {
+                        vue.zhuangtaiTypesList = res.data.list;
+                    }
+                });
+            }
+            //当前表的 推荐饭食 字段 字典表查询方法
+            function tuijianTypesSelect() {
+                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=tuijian_types", 'get', {}, function (res) {
+                    if (res.code == 0) {
+                        vue.tuijianTypesList = res.data.list;
+                    }
+                });
+            }
+
+
+            // 分页列表
+            pageList();
+
+            // 搜索按钮
+            jquery('#btn-search').click(function (e) {
+                pageList();
+            });
+
+            function pageList() {
+                // 获取列表数据
+                http.request('jiankangrizhi/list', 'get', vue.searchForm, function (res) {
+                    // console.log("获取到的列表数据:", res.data.list);
+                    vue.dataList = res.data.list;
+                    // 分页
+                    laypage.render({
+                        elem: 'pager',
+                        count: res.data.total,
+                        limit: vue.searchForm.limit,
+                        groups: 3,
+                        layout: ["prev", "page", "next"],
+                        jump: function (obj, first) {
+                            vue.searchForm.page = obj.curr;//翻页
+                            //首次不执行
+                            if (!first) {
+                                http.request('jiankangrizhi/list', 'get', vue.searchForm, function (res1) {
+                                    // console.log("翻页后获取到的列表数据:", res1.data.list);
+                                    vue.dataList = res1.data.list;
+                                })
+                            }
+                        }
+                    });
+                });
+            }
+            function pageList2() {
+                // 获取数据
+                http.request('jiankangrizhi/list', 'get', vue.searchForm, function (res) {
+                    console.log("获取到的全部数据:", res.data.list); // 输出获取的全部数据
+
+                    // 过滤数据，并映射到正确的字段
+                    const filteredData = res.data.list.map(item => ({
+                        date: item.suoshuriqiTime, // 日期字段
+                        weight: item.tizhong, // 体重
+                        bmi: item.bmiZhi, // BMI 值
+                        // bloodPressure: item.gaoya + '/' + item.diya // 组合血压数据
+                        gaoya: item.gaoya,
+                        diya: item.diya,
+                        height: item.shengao,//
+                    }));
+
+                    console.log("过滤后的数据:", filteredData); // 输出过滤后的数据
+
+                    // 更新 Vue 数据
+                    vue.dataList2 = filteredData;
+
+                    // 调用 ECharts 绘图
+                    renderChart(filteredData);
+
+                    // 生成健康建议
+                    const healthAdvice = generateHealthAdvice(filteredData);
+
+                    // 显示健康建议
+                    showHealthAdvice(healthAdvice);
+                });
+            }
+
+            // ECharts 渲染函数
+            function renderChart(data) {
+                var myChart = echarts.init(document.getElementById('chart'));
+
+                // 提取数据
+                var dates = data.map(item => item.date);   // 日期
+                var weights = data.map(item => item.weight); // 体重
+                var bmis = data.map(item => item.bmi);     // BMI
+                var gaoya = data.map(item => item.gaoya);  // 高压
+                var diya = data.map(item => item.diya);    // 低压
+                var heights = data.map(item => item.height); // 身高（如果需要可加入）
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: { text: '健康趋势图' },
+                    tooltip: { trigger: 'axis' },
+                    legend: { data: ['体重', 'BMI', '高压', '低压'] },
+                    xAxis: { type: 'category', data: dates },
+                    yAxis: { type: 'value' },
+                    series: [
+                        { name: '体重', type: 'line', data: weights },
+                        { name: 'BMI', type: 'line', data: bmis },
+                        { name: '高压', type: 'line', data: gaoya },
+                        { name: '低压', type: 'line', data: diya }
+                    ]
+                };
+
+                // 渲染图表
+                myChart.setOption(option);
+            }
+            // 生成健康建议的函数
+            function generateHealthAdvice(data) {
+                let advice = '';
+                const latestBMI = data[data.length - 1].bmi;
+
+                if (latestBMI > 24) {
+                    advice = '您的BMI值偏高，建议增加运动量，控制饮食。';
+                } else if (latestBMI < 18.5) {
+                    advice = '您的BMI值偏低，建议增加营养摄入，适当增加体重。';
+                } else {
+                    advice = '您的BMI值在正常范围内，继续保持健康的生活方式。';
+                }
+
+                return advice;
+            }
+
+            // 显示健康建议的函数
+            function showHealthAdvice(advice) {
+                const chart2 = document.getElementById('chart2');
+                chart2.innerHTML = `
+        <div class="health-advice">
+            <h3>健康评估报告:</h3>
+            <p>${advice}</p>
+        </div>
+    `;
+            }
+
+
+            // 调用 pageList2 获取数据并渲染图表
+            pageList2();
+
+        }
+
+
+
+        );
+
+        window.xznSlide = function () {
+            jQuery(".banner").slide({ mainCell: ".bd ul", autoPlay: true, interTime: 5000 });
+            jQuery("#ifocus").slide({
+                titCell: "#ifocus_btn li",
+                mainCell: "#ifocus_piclist ul",
+                effect: "leftLoop",
+                delayTime: 200,
+                autoPlay: true,
+                triggerTime: 0
+            });
+            jQuery("#ifocus").slide({ titCell: "#ifocus_btn li", mainCell: "#ifocus_tx ul", delayTime: 0, autoPlay: true });
+            jQuery(".product_list").slide({
+                mainCell: ".bd ul",
+                autoPage: true,
+                effect: "leftLoop",
+                autoPlay: true,
+                vis: 5,
+                trigger: "click",
+                interTime: 4000
+            });
+        };
+    </script>
+
+
+</body>
+
+</html>

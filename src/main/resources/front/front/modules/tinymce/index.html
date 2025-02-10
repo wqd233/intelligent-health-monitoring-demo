@@ -1,95 +1,136 @@
 <!DOCTYPE html>
 <html lang="cn">
+
 <head>
+    <!-- 设置文档的字符编码为UTF-8 -->
     <meta charset="UTF-8">
+    <!-- 设置视口的宽度和初始缩放比例 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 设置浏览器兼容性 -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 设置文档的标题 -->
     <title>Layui-Tinymce</title>
 </head>
+<!-- 引入Layui框架的CSS文件 -->
 <link rel="stylesheet" href="../layui/css/layui.css">
-<body>
-<div style="width: 90%;margin: 15px auto;">
-    <textarea name="" id="edit">这里是<span style="color: #e03e2d;"><em>edit初始化</em></span>的内容</textarea>
-    <hr />
-    <div class="layui-btn-group" style="margin-top: 10px">
-        <button class="layui-btn" lay-event="setContent">设置内容</button>
-        <button class="layui-btn" lay-event="insertContent">插入内容</button>
-        <button class="layui-btn" lay-event="getContent">获取内容</button>
-        <button class="layui-btn" lay-event="getText">获取文本</button>
-        <button class="layui-btn" lay-event="clearContent">清空内容</button>
-        <button class="layui-btn" lay-event="reload">重载编辑器</button>
-        <button class="layui-btn" lay-event="destroy">销毁编辑器</button>
-        <button class="layui-btn" lay-event="render">加载编辑器</button>
-    </div>
-    <br /><hr />
-    同时插入第二个编辑器，配置相互独立
-    <hr />
-    <textarea name="" id="edit2">这里是<span style="color: #e03e2d;"><em>edit2初始化</em></span>的内容</textarea>
 
-</div>
+<body>
+    <!-- 一个包含文本区域和按钮的容器 -->
+    <div style="width: 90%;margin: 15px auto;">
+        <!-- 一个文本区域，用于初始化TinyMCE编辑器 -->
+        <textarea name="" id="edit">这里是<span style="color: #e03e2d;"><em>edit初始化</em></span>的内容</textarea>
+        <!-- 一个水平分隔线 -->
+        <hr />
+        <!-- 一个包含多个按钮的按钮组 -->
+        <div class="layui-btn-group" style="margin-top: 10px">
+            <!-- 一个按钮，用于设置编辑器的内容 -->
+            <button class="layui-btn" lay-event="setContent">设置内容</button>
+            <!-- 一个按钮，用于插入内容到编辑器 -->
+            <button class="layui-btn" lay-event="insertContent">插入内容</button>
+            <!-- 一个按钮，用于获取编辑器的内容 -->
+            <button class="layui-btn" lay-event="getContent">获取内容</button>
+            <!-- 一个按钮，用于获取编辑器的纯文本内容 -->
+            <button class="layui-btn" lay-event="getText">获取文本</button>
+            <!-- 一个按钮，用于清空编辑器的内容 -->
+            <button class="layui-btn" lay-event="clearContent">清空内容</button>
+            <!-- 一个按钮，用于重载编辑器 -->
+            <button class="layui-btn" lay-event="reload">重载编辑器</button>
+            <!-- 一个按钮，用于销毁编辑器 -->
+            <button class="layui-btn" lay-event="destroy">销毁编辑器</button>
+            <!-- 一个按钮，用于加载编辑器 -->
+            <button class="layui-btn" lay-event="render">加载编辑器</button>
+        </div>
+        <!-- 一个换行和一个水平分隔线 -->
+        <br />
+        <hr />
+        <!-- 一个提示信息 -->
+        同时插入第二个编辑器，配置相互独立
+        <!-- 一个水平分隔线 -->
+        <hr />
+        <!-- 第二个文本区域，用于初始化第二个TinyMCE编辑器 -->
+        <textarea name="" id="edit2">这里是<span style="color: #e03e2d;"><em>edit2初始化</em></span>的内容</textarea>
+
+    </div>
 
 </body>
+<!-- 引入Layui框架的JavaScript文件 -->
 <script src="../layui/layui.js"></script>
 <script>
+    // 检查当前页面是否通过HTTP或HTTPS协议访问，如果不是，则弹出提示信息
     /^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
+    // 扩展Layui模块，引入TinyMCE编辑器
     layui.extend({
         tinymce: '{/}./tinymce/tinymce'
     }).use(['tinymce', 'util', 'layer'], function () {
+        // 获取TinyMCE模块
         var tinymce = layui.tinymce
 
+        // 获取工具模块
         var util = layui.util;
 
+        // 渲染第一个TinyMCE编辑器，并设置其高度为600像素
         var edit = tinymce.render({
             elem: "#edit"
             , height: 600
             // ...
             // 其余配置可参考官方文档
-        },(opt)=>{
+        }, (opt) => {
             //加载完成后回调
         });
 
+        // 渲染第二个TinyMCE编辑器，并设置其高度为200像素
         tinymce.render({
             elem: "#edit2"
             , height: 200
         });
 
+        // 绑定按钮的点击事件
         util.event('lay-event', {
-            getContent:() => {
+            // 获取编辑器的内容并弹出提示框
+            getContent: () => {
                 var content = tinymce.get('#edit').getContent()
                 layer.alert(content)
             },
-            setContent:() => {
-                tinymce.get('#edit').setContent('点击按钮设置的内容：<span style="color: #e03e2d;">' + new Date()+'</span>')
+            // 设置编辑器的内容
+            setContent: () => {
+                tinymce.get('#edit').setContent('点击按钮设置的内容：<span style="color: #e03e2d;">' + new Date() + '</span>')
             },
-            clearContent:() => {
+            // 清空编辑器的内容
+            clearContent: () => {
                 tinymce.get('#edit').setContent('')
             },
-            insertContent:() => {
+            // 插入内容到编辑器
+            insertContent: () => {
                 tinymce.get('#edit').insertContent('<b>插入内容</b>')
             },
-            getText:() => {
-                var text = tinymce.get('#edit').getContent({format:'text'})
+            // 获取编辑器的纯文本内容并弹出提示框
+            getText: () => {
+                var text = tinymce.get('#edit').getContent({ format: 'text' })
                 layer.alert(text)
             },
-            reload:() => {
+            // 重载编辑器
+            reload: () => {
                 tinymce.reload({
-                    elem:'#edit'
+                    elem: '#edit'
                     // 所有参数都可以重新设置 ...
-                },(opt) => {
+                }, (opt) => {
                     //重载完成后回调函数，会把所有参数回传，
                     //重载仅仅重新渲染编辑器，不会清空textarea，可手动清空或设置
                     tinymce.get('#edit').setContent('')
                 })
             },
-            destroy:()=>{
+            // 销毁编辑器
+            destroy: () => {
                 tinymce.get('#edit').destroy()
             },
-            render:()=>{
-                tinymce.render({elem:'#edit',height:'500px'})
+            // 加载编辑器
+            render: () => {
+                tinymce.render({ elem: '#edit', height: '500px' })
             }
         });
 
 
     });
 </script>
+
 </html>

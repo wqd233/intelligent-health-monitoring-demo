@@ -1,9 +1,12 @@
+// 验证
+
+
 /**
  * 邮箱
  * @param {*} s
  */
 function isEmail(s) {
-	if(s){
+	if (s) {
 		return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(s)
 	}
 	return true;
@@ -14,7 +17,7 @@ function isEmail(s) {
  * @param {*} s
  */
 function isMobile(s) {
-	if(s){
+	if (s) {
 		return /^1[0-9]{10}$/.test(s)
 	}
 	return true;
@@ -25,7 +28,7 @@ function isMobile(s) {
  * @param {*} s
  */
 function isPhone(s) {
-	if(s){
+	if (s) {
 		return /^([0-9]{3,4}-)?[0-9]{7,8}$/.test(s)
 	}
 	return true;
@@ -36,7 +39,7 @@ function isPhone(s) {
  * @param {*} s
  */
 function isURL(s) {
-	if(s){
+	if (s) {
 		return /^http[s]?:\/\/.*/.test(s)
 	}
 	return true;
@@ -47,7 +50,7 @@ function isURL(s) {
  * @param {*} s 
  */
 function isNumber(s) {
-	if(s){
+	if (s) {
 		return /(^-?[+-]?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)([eE][+-]?[0-9]+)?$)|(^$)/.test(s);
 	}
 	return true;
@@ -57,7 +60,7 @@ function isNumber(s) {
  * @param {*} s 
  */
 function isIntNumer(s) {
-	if(s){
+	if (s) {
 		return /(^-?\d+$)|(^$)/.test(s);
 	}
 	return true;
@@ -67,7 +70,7 @@ function isIntNumer(s) {
  */
 function isIdentity(idcard) {
 	const regIdCard = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-	if(idcard){
+	if (idcard) {
 		return regIdCard.test(idcard);
 	}
 	return true;

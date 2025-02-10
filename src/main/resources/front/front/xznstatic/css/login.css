@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -17,18 +18,42 @@ html, body {
     background-size: 100% 100%;
 }
 
-.login img, .reg img {
+.login img,
+.reg img {
     width: auto;
 }
 
-.login form, .reg form {
+.login form,
+.reg form {
     position: fixed;
-    top: 15%;
-    right: 140px;
+    /* 恢复 position: fixed; */
+    top: 0;
+    /* 设置 top: 0; */
+    left: 0;
+    /* 设置 left: 0; */
+    right: 0;
+    /* 设置 right: 0; */
+    bottom: 0;
+    /* 设置 bottom: 0; */
     padding: 20px 0;
     text-align: center;
     z-index: 10;
     background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    /* 其他样式属性保持不变 */
+    padding: 20px;
+    box-shadow: 0px 0px 0px 0px rgba(201, 214, 164, 1);
+    /* border-color: var(--publicSubColor); */
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    width: 700px;
+    border-style: solid;
+    justify-content: center !important;
+    height: auto;
+    margin: auto;
+    /* 修改为 margin: auto; */
 }
 
 .msg-warn {
@@ -56,40 +81,47 @@ html, body {
     background: #fff;
 }
 
-.reg form h1, .login form h1 {
+.reg form h1,
+.login form h1 {
     border-bottom: 1px solid #dbdbdb;
     padding-bottom: 20px;
 }
 
-.reg form p, .login form p {
+.reg form p,
+.login form p {
     margin-top: 15px;
 }
 
-.reg form a.off, .login form a.off {
+.reg form a.off,
+.login form a.off {
     position: absolute;
     right: 20px;
     top: 20px;
 }
 
-.reg form input, .login form input {
+.reg form input,
+.login form input {
     width: 280px;
     height: 40px;
     border-radius: 3px;
 }
 
-.reg form input[type="text"], .login form input[type="text"] {
+.reg form input[type="text"],
+.login form input[type="text"] {
     border: 1px solid #dbdbdb;
     font-size: 14px;
     padding-left: 10px;
 }
 
-.reg form input[type="password"], .login form input[type="password"] {
+.reg form input[type="password"],
+.login form input[type="password"] {
     border: 1px solid #dbdbdb;
     font-size: 14px;
     padding-left: 10px;
 }
 
-.reg input[type="submit"], .login input[type="submit"] {
+.reg input[type="submit"],
+.login input[type="submit"] {
     width: 280px;
     background: #C10000;
     font-size: 20px;
@@ -115,15 +147,18 @@ div.reg form p.txtL a {
     color: #c10000;
 }
 
-.reg form p.txt, .login form p.txt {
+.reg form p.txt,
+.login form p.txt {
     width: 280px;
     margin: 10px auto 0;
     text-align: right;
 }
 
-.reg p.txt a, .login p.txt a, {
-    color: #666;
-    text-decoration: underline;
+.reg p.txt a,
+.login p.txt a,
+{
+color: #666;
+text-decoration: underline;
 }
 
 div.login form p.txt a {

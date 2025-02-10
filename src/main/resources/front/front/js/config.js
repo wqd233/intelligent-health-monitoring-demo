@@ -47,15 +47,15 @@ var centerMenu = [
 var indexNav = [
 
     {
-        name: '论坛',
+        name: '论坛111',
         url: './pages/forum/list.html'
     },
     {
-        name: '公告',
+        name: '公告222',
         url: './pages/gonggao/list.html'
     },
     {
-        name: '新闻',
+        name: '新闻333',
         url: './pages/news/list.html'
     },
 
@@ -66,12 +66,12 @@ var adminurl = "http://localhost:8080/intelligent-health-monitoring-demo/admin/d
 
 
 
-// 后期要改
+// 后期要改    要改
 var menu = [
     { "backMenu": [{ "child": [{ "buttons": ["新增", "查看", "修改", "删除"], "menu": "用户", "menuJump": "列表", "tableName": "yonghu" }], "menu": "用户管理" }, { "child": [{ "buttons": ["新增", "查看", "修改", "删除", "查看评论"], "menu": "歌曲信息", "menuJump": "列表", "tableName": "gequxinxi" }], "menu": "歌曲信息管理" }, { "child": [{ "buttons": ["查看", "删除", "查看评论"], "menu": "推荐信息", "menuJump": "列表", "tableName": "tuijianxinxi" }], "menu": "推荐信息管理" }, { "child": [{ "buttons": ["新增", "查看", "修改", "删除"], "menu": "我的收藏管理", "tableName": "storeup" }], "menu": "我的收藏管理" }, { "child": [{ "buttons": ["新增", "查看", "修改", "删除"], "menu": "管理员", "tableName": "users" }], "menu": "管理员管理" }, { "child": [{ "buttons": ["新增", "查看", "修改", "删除"], "menu": "轮播图管理", "tableName": "config" }], "menu": "系统管理" }], "frontMenu": [{ "child": [{ "buttons": ["查看", "歌曲推荐", "查看评论"], "menu": "歌曲信息列表", "menuJump": "列表", "tableName": "gequxinxi" }], "menu": "歌曲信息模块" }, { "child": [{ "buttons": ["查看", "查看评论"], "menu": "推荐信息列表", "menuJump": "列表", "tableName": "tuijianxinxi" }], "menu": "推荐信息模块" }], "hasBackLogin": "是", "hasBackRegister": "否", "hasFrontLogin": "否", "hasFrontRegister": "否", "roleName": "管理员", "tableName": "users" }, { "backMenu": [{ "child": [{ "buttons": ["查看", "歌曲推荐"], "menu": "歌曲信息", "menuJump": "列表", "tableName": "gequxinxi" }], "menu": "歌曲信息管理" }, { "child": [{ "buttons": ["查看"], "menu": "推荐信息", "menuJump": "列表", "tableName": "tuijianxinxi" }], "menu": "推荐信息管理" }, { "child": [{ "buttons": ["查看"], "menu": "我的收藏管理", "tableName": "storeup" }], "menu": "我的收藏管理" }], "frontMenu": [{ "child": [{ "buttons": ["查看", "歌曲推荐", "查看评论"], "menu": "歌曲信息列表", "menuJump": "列表", "tableName": "gequxinxi" }], "menu": "歌曲信息模块" }, { "child": [{ "buttons": ["查看", "查看评论"], "menu": "推荐信息列表", "menuJump": "列表", "tableName": "tuijianxinxi" }], "menu": "推荐信息模块" }], "hasBackLogin": "是", "hasBackRegister": "否", "hasFrontLogin": "是", "hasFrontRegister": "是", "roleName": "用户", "tableName": "yonghu" }
 ]
 
-
+//不能动
 var isAuth = function (tableName, key) {
     let role = localStorage.getItem("userTable");
     let menus = menu;
@@ -89,7 +89,7 @@ var isAuth = function (tableName, key) {
     }
     return false;
 }
-
+//不能动
 var isFrontAuth = function (tableName, key) {
     let role = localStorage.getItem("userTable");
     let menus = menu;

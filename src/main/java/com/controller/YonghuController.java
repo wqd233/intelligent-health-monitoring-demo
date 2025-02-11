@@ -2,7 +2,9 @@
 package com.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.JSONObject;
@@ -292,6 +294,29 @@ public class YonghuController {
         r.put("userId", yonghu.getId());
         return r;
     }
+    /**
+     * 根据用户名获取邮箱
+     */
+    @IgnoreAuth
+    @GetMapping("/getEmailByUsername")
+    public R getEmailByUsername(@RequestParam String username) {
+        logger.debug("getEmailByUsername方法,,username:{}",username);
+
+        // 构建查询条件
+        Wrapper<YonghuEntity> wrapper = new EntityWrapper<YonghuEntity>()
+                .eq("username", username);
+
+        // 执行查询
+        YonghuEntity yonghu = yonghuService.selectOne(wrapper);
+
+        if (yonghu == null) {
+            return R.error("用户不存在");
+        }
+
+        // 返回邮箱信息（根据实际字段名称调整）
+        return R.ok().put("data", Collections.singletonMap("email", yonghu.getYonghuEmail()));
+    }
+
 
     // /**
     // * 注册
@@ -352,8 +377,9 @@ public class YonghuController {
     }
 
     /**
-     * 重置密码
+     * 重置密码  id
      */
+    @IgnoreAuth
     @GetMapping(value = "/resetPassword")
     public R resetPassword(Integer id, HttpServletRequest request) {
         YonghuEntity yonghu = yonghuService.selectById(id);
@@ -361,6 +387,83 @@ public class YonghuController {
         yonghuService.updateById(yonghu);
         return R.ok();
     }
+
+    /**
+     * 重置密码  name
+     */
+    @IgnoreAuth
+    @GetMapping(value = "/resetPasswordByUsername")
+    public R resetPasswordByUsername(@RequestParam("username") String username, HttpServletRequest request) {
+        // 根据用户名查询用户
+        YonghuEntity yonghu = yonghuService.selectByUserName(username);
+        if (yonghu == null) {
+            return R.error("用户不存在");
+        }
+        // 重置密码为123456
+        yonghu.setPassword("123456");
+        yonghuService.updateById(yonghu);
+        return R.ok("密码已重置为123456");
+    }
+
+    /**
+     * 发送邮件
+     */
+    @IgnoreAuth
+    @GetMapping("/sendMail")
+    public R sendMail(@RequestParam("toEmail") String toEmail,
+                      @RequestParam("subject") String subject,
+                      @RequestParam("text") String text,
+                      HttpServletRequest request) {
+        String apiKey = "fybjagiuzrqsbajf"; // 替换为你的 API 密钥
+        String fromEmail = "758274530@qq.com"; // 替换为你的发件人邮箱
+        String name = "发信昵称"; // 替换为你的发信昵称
+
+        // 尝试 HTTPS
+        String httpsUrl = "https://api.mmp.cc/api/mail?email=" + fromEmail + "&key=" + apiKey +
+                "&mail=" + toEmail + "&title=" + subject +
+                "&name=" + name + "&text=" + text;
+
+        try {
+            String response = callExternalApi(httpsUrl);
+            return R.ok(response);
+        } catch (Exception e) {
+            // 如果 HTTPS 失败，尝试 HTTP
+            String httpUrl = "http://api.mmp.cc/api/mail?email=" + fromEmail + "&key=" + apiKey +
+                    "&mail=" + toEmail + "&title=" + subject +
+                    "&name=" + name + "&text=" + text;
+
+            try {
+                String response = callExternalApi(httpUrl);
+                return R.ok(response);
+            } catch (Exception ex) {
+                return R.error("邮件发送失败: " + ex.getMessage());
+            }
+        }
+    }
+
+    /**
+     * 调用外部 API
+     * @param url API 的完整 URL
+     * @return API 的响应内容
+     * @throws Exception 如果发生异常
+     */
+    private String callExternalApi(String url) throws IOException {
+        // 使用 HttpURLConnection 调用外部 API
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("GET");
+
+        int responseCode = con.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            // 读取响应内容
+            java.util.Scanner s = new java.util.Scanner(con.getInputStream()).useDelimiter("\\A");
+            return s.hasNext() ? s.next() : "";
+        } else {
+            throw new IOException("API 请求失败，响应码: " + responseCode);
+        }
+    }
+
+
 
     /**
      * 修改密码

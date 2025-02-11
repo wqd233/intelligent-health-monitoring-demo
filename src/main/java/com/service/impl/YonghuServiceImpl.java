@@ -37,5 +37,14 @@ public class YonghuServiceImpl extends ServiceImpl<YonghuDao, YonghuEntity> impl
         return new PageUtils(page);
     }
 
+    @Autowired
+    private YonghuDao yonghuDao;
+
+    @Override
+    public YonghuEntity selectByUserName(String username) {
+        // 调用 YonghuDao 的 selectByUserName 方法
+        return yonghuDao.selectByUserName(username);
+    }
+
 
 }

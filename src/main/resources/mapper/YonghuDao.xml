@@ -54,5 +54,4 @@
         </where>
         order by a.${params.sort} ${params.order}
     </select>
-
 </mapper>

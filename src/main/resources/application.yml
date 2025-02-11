@@ -51,4 +51,6 @@ mybatis-plus:
 logging:
   level:
     com.dao: debug
+    com.service: info
+    com.scheduler : info
 

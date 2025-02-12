@@ -21,7 +21,7 @@ public class ReminderScheduler {
     /**
      * 每分钟执行一次，发送提醒
      */
-    @Scheduled(fixedRate = 60000) // 60000 毫秒 = 1 分钟
+    @Scheduled(fixedRate = 30000) // 60000 毫秒 = 1 分钟
     public void sendReminders() {
         logger.info("开始执行定时任务：发送提醒");
         reminderService.sendReminders();

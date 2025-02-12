@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <title>提醒事项列表</title>
+    <!-- 保持原有样式引用 -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../layui/css/layui.css">
+    <link rel="stylesheet" href="../../xznstatic/css/common.css" />
+    <link rel="stylesheet" href="../../xznstatic/css/style.css" />
+    <script type="text/javascript" src="../../xznstatic/js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="tixing.css">
+</head>
+
+<body class='bodyClass'>
+<div id="app">
+    <div class="center-container">
+        <!-- 左侧导航 -->
+        <div class="prolist">
+            <div class="left_nav">
+                <dl class="dlx1">
+                    <dt>提醒事项</dt>
+                    <dd>REMINDER LIST</dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- 右侧内容 -->
+        <div class="right-container">
+            <!-- 头部操作栏 -->
+            <div class="list-header">
+
+                <!-- 新增返回健康日志按钮 -->
+                <button @click="backToHealthLog" class="layui-btn layui-btn-normal">
+                    <i class="layui-icon">&#xe603;</i> 返回健康日志
+                </button>
+                <button @click="jumpToAddPage" class="layui-btn layui-btn-normal">
+                    <i class="layui-icon">&#xe654;</i> 新建提醒
+                </button>
+
+            </div>
+
+            <!-- 事项列表 -->
+            <table class="layui-table" lay-skin="nob">
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>提醒内容</th>
+                    <th>提醒时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item, index) in displayedReminders" :key="index">
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.reminderDetail }}</td>
+                    <td>{{ formatDate(item.reminderTime) }}</td>
+                    <td>
+                                <span class="layui-badge"
+                                      :class="{'layui-bg-green': item.status === 'SENT'}">
+                                    {{ reminderStatus(item.status) }}
+                                </span>
+                    </td>
+                    <td>
+                        <button @click="deleteReminder(item.id)" class="layui-btn layui-btn-xs layui-btn-danger">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- 分页 -->
+            <div class="pagination-container">
+                <button :disabled="currentPage === 1" @click="prevPage">上一页</button>
+                <span>当前页：{{ currentPage }}/{{ totalPages }}</span>
+                <button :disabled="currentPage === totalPages" @click="nextPage">下一页</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 保持原有脚本引用 -->
+<script src="../../layui/layui.js"></script>
+<script src="../../js/vue.js"></script>
+<script>
+    const BASE_URL = 'http://localhost:8080/intelligent-health-monitoring-demo'; // 替换为实际的 base_url
+
+    new Vue({
+        el: '#app',
+        data: {
+            allReminders: [], // 存储所有过滤后的提醒数据
+            displayedReminders: [], // 存储当前页要显示的提醒数据
+            currentPage: 1,
+            totalPages: 1,
+            pageSize: 5,
+            totalItems: 0,
+            newReminder: {
+                reminderDetail: '',
+                reminderTime: '',
+                status: 'PENDING',
+                username: '' // 初始化为 localStorage 中的用户名
+            }
+        },
+        methods: {
+            async getReminders() {
+                console.log('开始获取所有提醒事项列表');
+                // 第一次查询不使用分页，获取所有数据
+                const url = `${BASE_URL}/reminder/list?status=${this.status}`;
+                try {
+                    const response = await fetch(url);
+                    console.log('请求响应状态:', response.status);
+                    const data = await response.json();
+                    console.log('返回的数据:', data);
+
+                    // 获取当前用户名
+                    const currentUsername = localStorage.getItem('currentUsername');
+                    if (currentUsername) {
+                        // 过滤出当前用户的提醒
+                        this.allReminders = data.data.filter(item => item.username === currentUsername);
+                    } else {
+                        this.allReminders = data.data || [];
+                    }
+
+                    this.totalItems = this.allReminders.length;
+                    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+
+                    console.log('过滤后的提醒总数:', this.totalItems);
+                    console.log('总页数:', this.totalPages);
+
+                    // 根据当前页和每页数量截取要显示的数据
+                    this.displayedReminders = this.getDisplayedReminders();
+                    console.log('当前页要显示的提醒数据:', this.displayedReminders);
+                } catch (error) {
+                    console.error('获取提醒列表失败:', error);
+                    alert('获取提醒列表失败：' + error.message);
+                }
+            },
+            getDisplayedReminders() {
+                const startIndex = (this.currentPage - 1) * this.pageSize;
+                const endIndex = startIndex + this.pageSize;
+                console.log('当前页开始索引:', startIndex, '结束索引:', endIndex);
+                return this.allReminders.slice(startIndex, endIndex);
+            },
+            async deleteReminder(id) {
+                console.log('开始删除提醒事项，ID:', id);
+                const url = `${BASE_URL}/reminder/delete/${id}`;
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST'
+                    });
+                    console.log('删除提醒的响应:', response);
+                    const data = await response.json();
+                    console.log('删除提醒返回的数据:', data);
+                    if (response.ok) {
+                        this.getReminders();
+                    }
+                } catch (error) {
+                    console.error('删除提醒失败:', error);
+                    alert('删除提醒失败：' + error.message);
+                }
+            },
+            formatDate(timestamp) {
+                const date = new Date(timestamp);
+                return date.toLocaleString();
+            },
+            prevPage() {
+                if (this.currentPage > 1) {
+                    this.currentPage--;
+                    console.log('切换到上一页，当前页:', this.currentPage);
+                    // 更新当前页显示的数据
+                    this.displayedReminders = this.getDisplayedReminders();
+                    console.log('上一页要显示的提醒数据:', this.displayedReminders);
+                }
+            },
+            nextPage() {
+                if (this.currentPage < this.totalPages) {
+                    this.currentPage++;
+                    console.log('切换到下一页，当前页:', this.currentPage);
+                    // 更新当前页显示的数据
+                    this.displayedReminders = this.getDisplayedReminders();
+                    console.log('下一页要显示的提醒数据:', this.displayedReminders);
+                }
+            },
+            reminderStatus(status) {
+                const statusMap = {
+                    PENDING: '待发送',
+                    SENT: '已发送提醒'
+                };
+                return statusMap[status] || status;
+            },
+            jumpToAddPage() {
+                window.location.href = './addtixing.html';
+            },
+                // 新增返回健康日志方法
+                backToHealthLog() {
+                    // 请将 'healthlog.html' 替换为实际的健康日志页面文件名
+                    window.location.href = './list.html';
+                }
+        },
+        mounted() {
+            // 从 localStorage 中读取用户名
+            this.newReminder.username = localStorage.getItem('currentUsername') || '默认用户';
+            console.log("当前用户名:", this.newReminder.username);
+            this.getReminders();
+        }
+    });
+</script>
+</body>
+
+</html>

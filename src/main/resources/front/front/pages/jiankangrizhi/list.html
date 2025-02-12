@@ -161,12 +161,17 @@
                     <button @click="jump('../jiankangrizhi/add.html')"
                         class="layui-btn layui-btn-lg btn-theme sub_backgroundColor"
                         :style='{"padding":"0 15px","boxShadow":"0 0 8px rgba(0,0,0,0)","margin":"0 0 0 10px","borderColor":"#409EFF","color":"#333","borderRadius":"4px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"40px"}'>
-                        <i v-if="true" class="layui-icon">&#xe654;</i> 添加健康日志信息
+                        <i v-if="true" class="layui-icon">&#xe654;</i> 添加日志
                     </button>
                     <button @click="jump('../jiankangrizhi/shujufenxi.html')"
                         class="layui-btn layui-btn-lg btn-theme sub_backgroundColor"
                         :style='{"padding":"0 15px","boxShadow":"0 0 8px rgba(0,0,0,0)","margin":"0 0 0 10px","borderColor":"#409EFF","color":"#333","borderRadius":"4px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"40px"}'>
                         <i v-if="true" class="layui-icon"></i> 展示数据分析
+                    </button>
+                    <button @click="jump('../jiankangrizhi/tixingshixiang.html')"
+                            class="layui-btn layui-btn-lg btn-theme sub_backgroundColor"
+                            :style='{"padding":"0 15px","boxShadow":"0 0 8px rgba(0,0,0,0)","margin":"0 0 0 10px","borderColor":"#409EFF","color":"#333","borderRadius":"4px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"40px"}'>
+                        <i v-if="true" class="layui-icon"></i> 展示提醒事项
                     </button>
                 </div>
                 <table class="layui-table" lay-skin="nob" style="width: 1500px;overflow: auto">
@@ -402,6 +407,13 @@
             if (table) {
                 http.request(table + "/session", 'get', {}, function (data) {
                     vue.user = data.data;
+                    // 健康日志页面
+Vue.prototype.$user = vue.user; // 将用户信息存储到 Vue 原型中
+                    console.log("用户信息:", vue.user);
+
+                    console.log(vue.user.username); // 获取用户名
+                    localStorage.setItem('currentUsername', vue.user.username);
+
                 });
             }
 

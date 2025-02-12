@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <title>新建提醒</title>
+    <!-- 保持原有样式引用 -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../layui/css/layui.css">
+    <link rel="stylesheet" href="../../xznstatic/css/common.css" />
+    <link rel="stylesheet" href="../../xznstatic/css/style.css" />
+    <script type="text/javascript" src="../../xznstatic/js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="tixing.css">
+</head>
+
+<body class='bodyClass'>
+<div id="app">
+    <div class="center-container">
+        <!-- 左侧导航 -->
+        <div class="prolist">
+            <div class="left_nav">
+                <dl class="dlx1">
+                    <dt>提醒事项</dt>
+                    <dd>REMINDER LIST</dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- 右侧内容 -->
+        <div class="right-container">
+            <!-- 头部操作栏 -->
+            <div class="list-header">
+                <button @click="backToListPage" class="layui-btn layui-btn-normal">
+                    <i class="layui-icon">&#xe603;</i> 返回列表
+                </button>
+            </div>
+
+            <!-- 添加页面 -->
+            <div class="layui-form" style="padding:20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">提醒内容</label>
+                    <div class="layui-input-block">
+                        <input v-model="newReminder.reminderDetail" type="text" class="layui-input" placeholder="请输入提醒内容" required>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">提醒时间</label>
+                    <div class="layui-input-block">
+                        <input v-model="newReminder.reminderTime" type="datetime-local" class="layui-input" required>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button @click="createReminder" class="layui-btn">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 保持原有脚本引用 -->
+<script src="../../layui/layui.js"></script>
+<script src="../../js/vue.js"></script>
+<script>
+    const BASE_URL = 'http://localhost:8080/intelligent-health-monitoring-demo'; // 替换为实际的 base_url
+
+    new Vue({
+        el: '#app',
+        data: {
+            newReminder: {
+                reminderDetail: '',
+                reminderTime: '',
+                status: 'PENDING',
+                username: '' // 初始化为 localStorage 中的用户名
+            }
+        },
+        methods: {
+            async createReminder() {
+    // 检查提醒内容和提醒时间是否为空
+    if (!this.newReminder.reminderDetail || !this.newReminder.reminderTime) {
+        alert('请填写提醒内容和选择提醒时间');
+        return;
+    }
+    console.log('开始创建提醒...');
+    const url = `${BASE_URL}/reminder/create`;
+    // 将日期时间转换为 ISO 8601 格式
+    const isoDate = new Date(this.newReminder.reminderTime).toISOString();
+    this.newReminder.reminderTime = isoDate;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.newReminder)
+        });
+        console.log('新建提醒的响应:', response);
+        const data = await response.json();
+        console.log('创建提醒返回的数据:', data);
+        if (response.ok) {
+            alert('提醒创建成功');
+            this.backToListPage();
+        } else {
+            alert('提醒创建失败，请稍后重试');
+        }
+    } catch (error) {
+        console.error('创建提醒失败:', error);
+        alert('创建提醒失败：' + error.message);
+    }
+},
+            backToListPage() {
+                window.location.href = 'tixingshixiang.html';
+            }
+        },
+        mounted() {
+            // 从 localStorage 中读取用户名
+            this.newReminder.username = localStorage.getItem('currentUsername') || '默认用户';
+            console.log("当前用户名:", this.newReminder.username);
+        }
+    });
+</script>
+</body>
+</html>

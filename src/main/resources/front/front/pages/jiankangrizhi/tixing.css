@@ -1,0 +1,86 @@
+/* 布局样式 */
+.center-container {
+  width: 1200px;
+  margin: 0 auto 20px;
+  display: flex;
+  margin-top: 20px;
+}
+
+.prolist .left_nav {
+  background: #fff;
+  width: 220px;
+}
+
+.prolist .left_nav .dlx1 {
+  padding: 15px 0 15px 20px;
+  background: var(--publicMainColor);
+  color: #fff;
+}
+
+.right-container {
+  padding: 20px;
+  margin-left: 20px;
+  background: #fff;
+  flex: 1;
+  border: 1px solid #eee;
+}
+
+/* 表格增强样式 */
+.reminder-content {
+  max-width: 300px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.expand-btn {
+  color: #1890ff;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+.time-cell {
+  min-width: 180px;
+  white-space: nowrap;
+}
+
+/* 状态徽章 */
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 11px;
+  font-size: 12px;
+}
+
+.status-badge.layui-bg-green {
+  background-color: #d4edda !important;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+  .center-container {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .prolist .left_nav {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .right-container {
+    margin-left: 0;
+  }
+
+  .mobile-hide {
+    display: none;
+  }
+}

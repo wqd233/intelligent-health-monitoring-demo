@@ -1,0 +1,42 @@
+@startuml
+!pragma layout smetana
+
+skinparam component {
+  BackgroundColor #F5F5F5
+  BorderColor #333333
+  ArrowColor #666666
+}
+
+actor 用户 as User
+actor 管理员 as Admin
+database "邮件服务器" as MailServer
+
+component "P1: 用户管理" as P1
+component "P2: 健康知识服务" as P2
+component "P3: 健康监测分析" as P3
+component "P4: 智能提醒" as P4
+
+database "D1: 用户数据库" as D1
+database "D2: 健康日志库" as D2
+database "D3: 知识库" as D3
+database "D4: 提醒任务队列" as D4
+
+User --> P1 : 注册信息\n(用户名,密码,邮箱)
+User --> P1 : 登录请求\n(账号,密码)
+User --> P3 : 健康数据\n(体重,血压,症状)
+User --> P4 : 提醒设置\n(内容,时间,方式)
+
+Admin --> P2 : 发布请求\n(公告/资讯标题,内容)
+
+P1 --> D1 : 存储/查询用户信息
+P2 --> D3 : 存储/读取知识内容
+P3 --> D2 : 存储健康日志\n生成趋势图
+P4 --> D4 : 写入/读取提醒任务
+P4 --> MailServer : 发送邮件\n(密码重置,提醒)
+
+D1 <-- P1 : 验证用户
+D3 <-- P2 : 查询分类内容
+D2 <-- P3 : 读取健康数据
+D4 <-- P4 : 触发任务
+
+@enduml

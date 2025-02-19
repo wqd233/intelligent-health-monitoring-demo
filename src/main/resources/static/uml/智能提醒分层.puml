@@ -1,0 +1,62 @@
+@startuml
+skinparam component {
+  BackgroundColor #F5F5F5
+  BorderColor #333333
+  ArrowColor #666666
+}
+
+actor 用户 as User
+actor 管理员 as Admin
+database "D6: 提醒任务库" as D6 {
+  (定时任务)
+  (发送记录)
+}
+database "D1: 用户数据库" as D1
+
+component "P4.1 任务配置" as P41 {
+  component "输入校验" as P411
+  component "周期解析" as P412
+  component "冲突检测" as P413
+}
+
+component "P4.2 调度引擎" as P42 {
+  component "时间轮" as P421
+  component "触发判断" as P422
+}
+
+component "P4.3 通知服务" as P43 {
+  component "模板渲染" as P431
+  component "渠道适配" as P432
+  component "重试机制" as P433
+}
+
+component "P4.4 连接管理" as P44 {
+  component "SMTP配置" as P441
+  component "通道监控" as P442
+}
+
+User --> P411 : 创建提醒\n(内容/时间/周期)
+User --> P413 : 删除请求\n(任务ID)
+Admin --> P441 : 配置SMTP\n(host/port/ssl)
+
+P411 --> P412 : 有效负载
+P412 --> P413 : 解析后配置
+P413 --> D6 : 持久化任务\n(含状态标记)
+D6 --> P421 : 加载待调度任务
+
+P421 --> P422 : 触发检查\n(每秒轮询)
+P422 --> P431 : 到达触发条件
+P431 --> D1 : 获取用户邮箱/手机
+D1 --> P431 : 联系方式数据
+P431 --> P432 : 格式化消息
+P432 --> P433 : 发送请求
+P433 --> P441 : 获取通道配置
+P441 --> P433 : SMTP凭证
+P433 --> (SMTP服务器) : 发送邮件
+P433 --> D6 : 记录发送状态
+
+
+P432 --> User : 系统通知
+P433 --> User : 邮件/短信
+P422 --> User : 本地弹窗提醒
+@enduml

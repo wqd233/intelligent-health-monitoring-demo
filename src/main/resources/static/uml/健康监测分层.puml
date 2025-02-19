@@ -1,0 +1,55 @@
+@startuml
+skinparam component {
+  BackgroundColor #F5F5F5
+  BorderColor #333333
+  ArrowColor #666666
+}
+
+actor 用户 as User
+database "D5: 健康日志库" as D5 {
+  (时序健康数据)
+  (症状描述)
+  (用户画像)
+}
+
+component "P3.1 数据采集" as P31 {
+  component "输入校验" as P311
+  component "单位标准化" as P312
+}
+
+component "P3.2 存储管理" as P32 {
+  component "时序存储" as P321
+  component "日志检索" as P322
+}
+
+component "P3.3 分析引擎" as P33 {
+  component "趋势计算" as P331
+  component "风险评估" as P332
+  component "报告生成" as P333
+}
+
+component "P3.4 可视化" as P34 {
+  component "图表渲染" as P341
+  component "交互处理" as P342
+}
+
+User --> P311 : 添加日志\n(体重=70kg, 血压=120/80)
+User --> P322 : 查看日志请求\n(时间范围)
+User --> P321 : 删除日志指令\n(日志ID)
+
+P311 --> P312 : 原始数据
+P312 --> P321 : 标准化数据\n(kg→g, mmHg→kPa)
+P321 --> D5 : 持久化存储
+D5 --> P331 : 读取时序数据
+P331 --> P341 : 数据序列\n(时间戳, 数值)
+P331 --> P332 : 统计指标\n(均值/方差)
+P332 --> P333 : 风险等级
+P333 --> User : PDF报告\n(评分+建议)
+
+P341 --> P342 : 图表元数据
+P342 --> User : 交互式折线图\n(悬停查看详情)
+
+P322 --> D5 : 查询条件
+D5 --> P322 : 原始日志记录
+P322 --> User : 结构化列表\n(日期/指标摘要)
+@enduml

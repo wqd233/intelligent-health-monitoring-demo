@@ -1,0 +1,21 @@
+@startuml
+skinparam component {
+  BackgroundColor #F5F5F5
+  BorderColor #333333
+  ArrowColor #666666
+}
+
+actor 用户 as User
+database "D2: 健康日志库" as D2
+
+component "P3.1: 数据采集" as P31
+component "P3.2: 趋势分析" as P32
+component "P3.3: 报告生成" as P33
+
+User --> P31 : 健康数据\n(体重,血压)
+P31 --> D2 : 存储日志
+D2 --> P32 : 读取历史数据
+P32 --> User : 趋势图(JSON)
+D2 --> P33 : 综合数据
+P33 --> User : 评估报告(PDF)
+@enduml

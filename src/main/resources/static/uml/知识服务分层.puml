@@ -1,0 +1,57 @@
+@startuml
+skinparam component {
+  BackgroundColor #F5F5F5
+  BorderColor #333333
+  ArrowColor #666666
+}
+
+actor 管理员 as Admin
+actor 用户 as User
+database "D3: 知识库" as D3 {
+  (帖子/评论)
+  (公告)
+  (资讯+多媒体)
+  (分类标签)
+}
+
+component "P2.1 内容管理" as P21 {
+  component "发布审核" as P211
+  component "分类维护" as P212
+  component "多媒体处理" as P213
+}
+
+component "P2.2 交互处理" as P22 {
+  component "UGC生成" as P221
+  component "热度计算" as P222
+  component "推荐引擎" as P223
+}
+
+component "P2.3 内容展示" as P23 {
+  component "分类路由" as P231
+  component "详情渲染" as P232
+  component "互动同步" as P233
+}
+
+Admin --> P211 : 发布公告/资讯\n(标题,内容,分类)
+Admin --> P212 : 维护分类标签\n(新增/删除)
+Admin --> P213 : 上传附件\n(图片,视频)
+
+User --> P221 : 发布帖子/评论\n(文本,分类标签)
+User --> P233 : 点赞/收藏/分享\n(操作类型,目标ID)
+
+P211 --> D3 : 写入公告/资讯\n(含审核状态)
+P212 --> D3 : 更新分类元数据
+P213 --> D3 : 存储多媒体文件\n(路径映射)
+P221 --> D3 : 保存UGC内容\n(关联用户ID)
+
+D3 --> P231 : 读取分类结构
+D3 --> P232 : 获取详情内容
+D3 --> P222 : 提供原始互动数据
+
+P222 --> D3 : 更新热度指标\n(浏览量+1)
+P223 --> User : 推荐内容列表\n(根据行为画像)
+
+P231 --> User : 分类导航视图\n(带最新/热门标识)
+P232 --> User : 详情页渲染\n(正文+多媒体)
+P233 --> D3 : 同步互动状态\n(点赞数+1)
+@enduml

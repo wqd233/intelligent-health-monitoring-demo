@@ -9,7 +9,7 @@ import org.springframework.lang.Nullable;
 import java.util.List;
 
 /**
- * 新闻 服务类
+ * 健康资讯 服务类
  */
 public interface NewsService extends IService<NewsEntity> {
 

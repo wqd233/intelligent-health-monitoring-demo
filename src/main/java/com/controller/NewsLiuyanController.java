@@ -33,7 +33,7 @@ import com.utils.R;
 import com.alibaba.fastjson.*;
 
 /**
- * 新闻留言
+ * 健康资讯留言
  * 后端接口
  * @author
  * @email
@@ -56,15 +56,15 @@ public class NewsLiuyanController {
     @Autowired
     private DictionaryService dictionaryService;//字典
     @Autowired
-    private ForumService forumService;//论坛
+    private ForumService forumService;//健康知识交流区
     @Autowired
-    private GonggaoService gonggaoService;//公告
+    private GonggaoService gonggaoService;//健康公告
     @Autowired
     private JiankangrizhiService jiankangrizhiService;//健康日志
     @Autowired
-    private NewsService newsService;//新闻
+    private NewsService newsService;//健康资讯
     @Autowired
-    private NewsCollectionService newsCollectionService;//新闻收藏
+    private NewsCollectionService newsCollectionService;//健康资讯收藏
     @Autowired
     private YonghuService yonghuService;//用户
     @Autowired
@@ -105,7 +105,7 @@ public class NewsLiuyanController {
             //entity转view
             NewsLiuyanView view = new NewsLiuyanView();
             BeanUtils.copyProperties( newsLiuyan , view );//把实体数据重构到view中
-            //级联表 新闻
+            //级联表 健康资讯
             //级联表
             NewsEntity news = newsService.selectById(newsLiuyan.getNewsId());
             if(news != null){
@@ -212,7 +212,7 @@ public class NewsLiuyanController {
                         for(List<String> data:dataList){
                             //循环
                             NewsLiuyanEntity newsLiuyanEntity = new NewsLiuyanEntity();
-//                            newsLiuyanEntity.setNewsId(Integer.valueOf(data.get(0)));   //新闻 要改的
+//                            newsLiuyanEntity.setNewsId(Integer.valueOf(data.get(0)));   //健康资讯 要改的
 //                            newsLiuyanEntity.setYonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
 //                            newsLiuyanEntity.setNewsLiuyanText(data.get(0));                    //留言内容 要改的
 //                            newsLiuyanEntity.setInsertTime(date);//时间

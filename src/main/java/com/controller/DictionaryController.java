@@ -54,17 +54,17 @@ public class DictionaryController {
     private TokenService tokenService;
 
     @Autowired
-    private ForumService forumService;//论坛
+    private ForumService forumService;//健康知识交流区
     @Autowired
-    private GonggaoService gonggaoService;//公告
+    private GonggaoService gonggaoService;//健康公告
     @Autowired
     private JiankangrizhiService jiankangrizhiService;//健康日志
     @Autowired
-    private NewsService newsService;//新闻
+    private NewsService newsService;//健康资讯
     @Autowired
-    private NewsCollectionService newsCollectionService;//新闻收藏
+    private NewsCollectionService newsCollectionService;//健康资讯收藏
     @Autowired
-    private NewsLiuyanService newsLiuyanService;//新闻留言
+    private NewsLiuyanService newsLiuyanService;//健康资讯留言
     @Autowired
     private YonghuService yonghuService;//用户
     @Autowired

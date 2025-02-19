@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>新闻添加</title>
+    <title>健康资讯添加</title>
     <!-- bootstrap样式，地图插件使用 -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../layui/css/layui.css">
@@ -93,7 +93,7 @@
     <!-- 当前表的 -->
                 <div class="layui-form-item main_borderColor" :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                     <label  :style='{"width":"auto","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
-                        新闻名称：
+                        健康资讯名称：
                     </label>
                     <div class="layui-input-block">
                         <input class="layui-input main_borderColor" :style='{"padding":"0 12px","boxShadow":"0 0 0px rgba(160, 67, 26, 1)","backgroundColor":"#fff","color":"rgba(135, 206, 250, 1)","borderRadius":"4px","textAlign":"left","borderWidth":"1px","fontSize":"15px","borderStyle":"solid","height":"40px"}'
@@ -103,7 +103,7 @@
 <!-- 唯一uuid -->
                 <div class="layui-form-item main_borderColor" :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                     <label  :style='{"width":"auto","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
-                        新闻编号：
+                        健康资讯编号：
                     </label>
                     <div class="layui-input-block">
                         <input class="layui-input main_borderColor" :style='{"padding":"0 12px","boxShadow":"0 0 0px rgba(160, 67, 26, 1)","backgroundColor":"#fff","color":"rgba(135, 206, 250, 1)","borderRadius":"4px","textAlign":"left","borderWidth":"1px","fontSize":"15px","borderStyle":"solid","height":"40px"}'
@@ -112,7 +112,7 @@
                 </div>
                 <div class="layui-form-item main_borderColor" :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                     <label  :style='{"width":"auto","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
-                        新闻照片：
+                        健康资讯照片：
                     </label>
                     <div class="layui-input-block">
                         <div v-if="detail.newsPhoto" style="display:inline-block;margin-right:10px;">
@@ -121,13 +121,13 @@
                             <input type="hidden" :value="detail.newsPhoto" id="newsPhoto" name="newsPhoto" />
                         </div>
                         <button v-if="!ro.newsPhoto" :style='{"padding":"0 10px","boxShadow":"0 0 0px rgba(255,0,0,.5)","margin":"0 10px 0 0","borderColor":"#ccc","color":"#fff","borderRadius":"8px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"44px"}' type="button" class="layui-btn btn-theme main_backgroundColor" id="newsPhotoUpload">
-                            <i v-if="true" :style='{"color":"#fff","show":true,"fontSize":"14px"}' class="layui-icon">&#xe67c;</i>上传新闻照片
+                            <i v-if="true" :style='{"color":"#fff","show":true,"fontSize":"14px"}' class="layui-icon">&#xe67c;</i>上传健康资讯照片
                         </button>
                     </div>
                 </div>
                     <div class="layui-form-item main_borderColor" :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                     <label  :style='{"width":"auto","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
-                        新闻视频：
+                        健康资讯视频：
                     </label>
                     <div class="layui-input-block">
                         <div v-if="detail.newsVideo" style="display:inline-block;margin-right:10px;">
@@ -139,13 +139,13 @@
                             <input type="hidden" :value="detail.newsVideo" id="newsVideo" name="newsVideo" />
                         </div>
                         <button v-if="!ro.newsVideo" :style='{"padding":"0 10px","boxShadow":"0 0 0px rgba(255,0,0,.5)","margin":"0 10px 0 0","borderColor":"#ccc","color":"#fff","borderRadius":"8px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"44px"}' type="button" class="layui-btn btn-theme main_backgroundColor" id="newsVideoUpload">
-                            <i v-if="true" :style='{"color":"#fff","show":true,"fontSize":"14px"}' class="layui-icon">&#xe67c;</i>上传新闻视频
+                            <i v-if="true" :style='{"color":"#fff","show":true,"fontSize":"14px"}' class="layui-icon">&#xe67c;</i>上传健康资讯视频
                         </button>
                     </div>
                 </div>
                     <div class="layui-form-item main_borderColor" :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                     <label  :style='{"width":"auto","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
-                        新闻类型：
+                        健康资讯类型：
                     </label>
                     <div class="layui-input-block">
                         <select name="newsTypes" id="newsTypes" lay-filter="newsTypes" :disabled="ro.newsTypes">
@@ -165,7 +165,7 @@
 <!-- text后缀 -->
             <div class="layui-form-item main_borderColor" :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                 <label  :style='{"width":"auto","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}' class="layui-form-label">
-                    新闻详情：
+                    健康资讯详情：
                 </label>
                 <div class="layui-input-block">
                     <textarea class="main_borderColor layui-input" style="width: 100%;height: 100px;border-radius: 5px;padding: 10px" v-model="detail.newsContent" lay-verify="required" :readonly="ro.newsContent" name="newsContent" id="newsContent" autocomplete="off"></textarea>
@@ -279,13 +279,13 @@
             localStorage.setItem("goUtl","./pages/news/list.html")
 
             // 下拉框
-            // 新闻类型的查询和初始化
+            // 健康资讯类型的查询和初始化
             newsTypesSelect();
             // 是否上架的查询和初始化
             shangxiaTypesSelect();
 
            // 上传文件
-            // 新闻照片的文件上传
+            // 健康资讯照片的文件上传
             upload.render({
                 //绑定元素
                 elem: '#newsPhotoUpload',
@@ -332,7 +332,7 @@
                     })
                 }
             });
-            // 新闻视频的文件上传
+            // 健康资讯视频的文件上传
             upload.render({
                 //绑定元素
                 elem: '#newsVideoUpload',
@@ -464,7 +464,7 @@
 
 
 
-       // 新闻类型的查询
+       // 健康资讯类型的查询
        function newsTypesSelect() {
            //填充下拉框选项
            layui.http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types", "GET", {}, (res) => {

@@ -9,8 +9,8 @@
                 >
             <el-row>
                 <el-col :span="12"  v-if="sessionTable !='news'">
-                    <el-form-item class="select" v-if="type!='info'"  label="新闻" prop="newsId">
-                        <el-select v-model="ruleForm.newsId" :disabled="ro.newsId" filterable placeholder="请选择新闻" @change="newsChange">
+                    <el-form-item class="select" v-if="type!='info'"  label="健康资讯" prop="newsId">
+                        <el-select v-model="ruleForm.newsId" :disabled="ro.newsId" filterable placeholder="请选择健康资讯" @change="newsChange">
                             <el-option
                                     v-for="(item,index) in newsOptions"
                                     v-bind:key="item.id"
@@ -22,36 +22,36 @@
                 </el-col>
 
                 <el-col :span="12"  v-if="sessionTable !='news' ">
-                    <el-form-item class="input" v-if="type!='info'"  label="新闻名称" prop="newsName">
+                    <el-form-item class="input" v-if="type!='info'"  label="健康资讯名称" prop="newsName">
                         <el-input v-model="newsForm.newsName"
-                                  placeholder="新闻名称" clearable readonly></el-input>
+                                  placeholder="健康资讯名称" clearable readonly></el-input>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item class="input" label="新闻名称" prop="newsName">
+                        <el-form-item class="input" label="健康资讯名称" prop="newsName">
                             <el-input v-model="ruleForm.newsName"
-                                      placeholder="新闻名称" readonly></el-input>
+                                      placeholder="健康资讯名称" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="12" v-if="sessionTable !='news' ">
-                    <el-form-item class="upload" v-if="type!='info' && !ro.newsPhoto" label="新闻照片" prop="newsPhoto">
+                    <el-form-item class="upload" v-if="type!='info' && !ro.newsPhoto" label="健康资讯照片" prop="newsPhoto">
                         <img style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in (newsForm.newsPhoto || '').split(',')" :src="$base.url+item" width="100" height="100">
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item v-if="ruleForm.newsPhoto" label="新闻照片" prop="newsPhoto">
+                        <el-form-item v-if="ruleForm.newsPhoto" label="健康资讯照片" prop="newsPhoto">
                             <img style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in (ruleForm.newsPhoto || '').split(',')" :src="$base.url+item" width="100" height="100">
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="12"  v-if="sessionTable !='news' ">
-                    <el-form-item class="input" v-if="type!='info'"  label="新闻类型" prop="newsValue">
+                    <el-form-item class="input" v-if="type!='info'"  label="健康资讯类型" prop="newsValue">
                         <el-input v-model="newsForm.newsValue"
-                                  placeholder="新闻类型" clearable readonly></el-input>
+                                  placeholder="健康资讯类型" clearable readonly></el-input>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item class="input" label="新闻类型" prop="newsValue">
+                        <el-form-item class="input" label="健康资讯类型" prop="newsValue">
                             <el-input v-model="ruleForm.newsValue"
-                                      placeholder="新闻类型" readonly></el-input>
+                                      placeholder="健康资讯类型" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
@@ -143,7 +143,7 @@
                 yonghuOptions : [],
                 rules: {
                    newsId: [
-                              { required: true, message: '新闻不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯不能为空', trigger: 'blur' },
                               {  pattern: /^[0-9]*$/,
                                   message: '只允许输入整数',
                                   trigger: 'blur'

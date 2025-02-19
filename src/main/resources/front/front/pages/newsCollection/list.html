@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>新闻收藏</title>
+    <title>健康资讯收藏</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="renderer" content="webkit">
@@ -112,7 +112,7 @@
 <div class="prolist">
     <div class="left_nav">
         <dl class="dlx1">
-            <dt>新闻收藏</dt>
+            <dt>健康资讯收藏</dt>
             <dd>USER / CENTER</dd>
         </dl>
         <ul>
@@ -336,9 +336,9 @@
         });
 
 
-                                                            //级联表的 新闻类型 字段 字典表查询
+                                                            //级联表的 健康资讯类型 字段 字典表查询
             newsTypesSelect();
-            //级联表的 新闻类型 字段 字典表查询方法
+            //级联表的 健康资讯类型 字段 字典表查询方法
             function newsTypesSelect() {
                 http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types", 'get', {}, function (res) {
                     if(res.code == 0){

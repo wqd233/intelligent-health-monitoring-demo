@@ -7,8 +7,8 @@
                 <el-row :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
                                                                 
                                          
-                    <el-form-item :label="contents.inputTitle == 1 ? '新闻名称' : ''">
-                        <el-input prefix-icon="el-icon-search" v-model="searchForm.newsName" placeholder="新闻名称" clearable></el-input>
+                    <el-form-item :label="contents.inputTitle == 1 ? '健康资讯名称' : ''">
+                        <el-input prefix-icon="el-icon-search" v-model="searchForm.newsName" placeholder="健康资讯名称" clearable></el-input>
                     </el-form-item>
                                                                                                                          
                                                                                                                                                                                      
@@ -49,7 +49,7 @@
                            v-if="isAuth('newsLiuyan','导入导出')"
                            icon="el-icon-download"
                            href="http://localhost:8080/intelligent-health-monitoring-demo/upload/newsLiuyanMuBan.xls"
-                        >批量导入新闻留言数据模板</a>
+                        >批量导入健康资讯留言数据模板</a>
                         &nbsp;
                         <el-upload
                                 v-if="isAuth('newsLiuyan','导入导出')"
@@ -62,7 +62,7 @@
                                     v-if="isAuth('newsLiuyan','导入导出')"
                                     type="success"
                                     icon="el-icon-upload2"
-                            >批量导入新闻留言数据</el-button>
+                            >批量导入健康资讯留言数据</el-button>
                         </el-upload>
                         &nbsp;
                         <!-- 导出excel -->
@@ -100,7 +100,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="newsName"
                                       header-align="center"
-                                      label="新闻名称">
+                                      label="健康资讯名称">
                         <template slot-scope="scope">
                             {{scope.row.newsName}}
                         </template>
@@ -272,14 +272,14 @@
             //导出excel
             json_fields: {
                 //级联表字段
-                     '新闻名称': 'newsName',
-                     '新闻编号': 'newsUuidNumber',
-                     '新闻照片': 'newsPhoto',
-                     '新闻视频': 'newsVideo',
+                     '健康资讯名称': 'newsName',
+                     '健康资讯编号': 'newsUuidNumber',
+                     '健康资讯照片': 'newsPhoto',
+                     '健康资讯视频': 'newsVideo',
                      '赞': 'zanNumber',
                      '踩': 'caiNumber',
-                     '新闻类型': 'newsTypes',
-                     '新闻热度': 'newsClicknum',
+                     '健康资讯类型': 'newsTypes',
+                     '健康资讯热度': 'newsClicknum',
                      '发布时间': 'fabuTime',
                      '是否上架': 'shangxiaTypes',
                      '用户姓名': 'yonghuName',
@@ -803,7 +803,7 @@
                 }).then(({data}) => {
                     if(data && data.code === 0){
                         _this.$message({
-                            message: "导入新闻留言数据成功",
+                            message: "导入健康资讯留言数据成功",
                             type: "success",
                             duration: 1500,
                             onClose: () => {

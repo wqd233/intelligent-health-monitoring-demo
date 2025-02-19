@@ -33,7 +33,7 @@ import com.utils.R;
 import com.alibaba.fastjson.*;
 
 /**
- * 新闻
+ * 健康资讯
  * 后端接口
  * @author
  * @email
@@ -56,15 +56,15 @@ public class NewsController {
     @Autowired
     private DictionaryService dictionaryService;//字典
     @Autowired
-    private ForumService forumService;//论坛
+    private ForumService forumService;//健康知识交流区
     @Autowired
-    private GonggaoService gonggaoService;//公告
+    private GonggaoService gonggaoService;//健康公告
     @Autowired
     private JiankangrizhiService jiankangrizhiService;//健康日志
     @Autowired
-    private NewsCollectionService newsCollectionService;//新闻收藏
+    private NewsCollectionService newsCollectionService;//健康资讯收藏
     @Autowired
-    private NewsLiuyanService newsLiuyanService;//新闻留言
+    private NewsLiuyanService newsLiuyanService;//健康资讯留言
     @Autowired
     private YonghuService yonghuService;//用户
     @Autowired
@@ -227,14 +227,14 @@ public class NewsController {
                         for(List<String> data:dataList){
                             //循环
                             NewsEntity newsEntity = new NewsEntity();
-//                            newsEntity.setNewsName(data.get(0));                    //新闻名称 要改的
-//                            newsEntity.setNewsUuidNumber(data.get(0));                    //新闻编号 要改的
+//                            newsEntity.setNewsName(data.get(0));                    //健康资讯名称 要改的
+//                            newsEntity.setNewsUuidNumber(data.get(0));                    //健康资讯编号 要改的
 //                            newsEntity.setNewsPhoto("");//详情和图片
-//                            newsEntity.setNewsVideo(data.get(0));                    //新闻视频 要改的
+//                            newsEntity.setNewsVideo(data.get(0));                    //健康资讯视频 要改的
 //                            newsEntity.setZanNumber(Integer.valueOf(data.get(0)));   //赞 要改的
 //                            newsEntity.setCaiNumber(Integer.valueOf(data.get(0)));   //踩 要改的
-//                            newsEntity.setNewsTypes(Integer.valueOf(data.get(0)));   //新闻类型 要改的
-//                            newsEntity.setNewsClicknum(Integer.valueOf(data.get(0)));   //新闻热度 要改的
+//                            newsEntity.setNewsTypes(Integer.valueOf(data.get(0)));   //健康资讯类型 要改的
+//                            newsEntity.setNewsClicknum(Integer.valueOf(data.get(0)));   //健康资讯热度 要改的
 //                            newsEntity.setFabuTime(sdf.parse(data.get(0)));          //发布时间 要改的
 //                            newsEntity.setNewsContent("");//详情和图片
 //                            newsEntity.setShangxiaTypes(Integer.valueOf(data.get(0)));   //是否上架 要改的
@@ -245,7 +245,7 @@ public class NewsController {
 
 
                             //把要查询是否重复的字段放入map中
-                                //新闻编号
+                                //健康资讯编号
                                 if(seachFields.containsKey("newsUuidNumber")){
                                     List<String> newsUuidNumber = seachFields.get("newsUuidNumber");
                                     newsUuidNumber.add(data.get(0));//要改的
@@ -257,14 +257,14 @@ public class NewsController {
                         }
 
                         //查询是否重复
-                         //新闻编号
+                         //健康资讯编号
                         List<NewsEntity> newsEntities_newsUuidNumber = newsService.selectList(new EntityWrapper<NewsEntity>().in("news_uuid_number", seachFields.get("newsUuidNumber")).eq("news_delete", 1));
                         if(newsEntities_newsUuidNumber.size() >0 ){
                             ArrayList<String> repeatFields = new ArrayList<>();
                             for(NewsEntity s:newsEntities_newsUuidNumber){
                                 repeatFields.add(s.getNewsUuidNumber());
                             }
-                            return R.error(511,"数据库的该表中的 [新闻编号] 字段已经存在 存在数据为:"+repeatFields.toString());
+                            return R.error(511,"数据库的该表中的 [健康资讯编号] 字段已经存在 存在数据为:"+repeatFields.toString());
                         }
                         newsService.insertBatch(newsList);
                         return R.ok();

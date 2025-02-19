@@ -24,7 +24,7 @@ import com.service.ForumService;
 import com.entity.view.ForumView;
 
 /**
- * 论坛 服务实现类
+ * 健康知识交流区 服务实现类
  */
 @Service("forumService")
 @Transactional

@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 
 /**
- * 公告
+ * 健康公告
  * 手机端接口返回实体辅助类
  * （主要作用去除一些不必要的字段）
  */
@@ -28,7 +28,7 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-     * 公告名称
+     * 健康公告名称
      */
 
     @TableField(value = "gonggao_name")
@@ -36,7 +36,7 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-     * 公告图片
+     * 健康公告图片
      */
 
     @TableField(value = "gonggao_photo")
@@ -44,7 +44,7 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-     * 公告类型
+     * 健康公告类型
      */
 
     @TableField(value = "gonggao_types")
@@ -52,7 +52,7 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-     * 公告发布时间
+     * 健康公告发布时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
@@ -62,7 +62,7 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-     * 公告详情
+     * 健康公告详情
      */
 
     @TableField(value = "gonggao_content")
@@ -95,7 +95,7 @@ public class GonggaoVO implements Serializable {
         this.id = id;
     }
     /**
-	 * 设置：公告名称
+	 * 设置：健康公告名称
 	 */
     public String getGonggaoName() {
         return gonggaoName;
@@ -103,14 +103,14 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-	 * 获取：公告名称
+	 * 获取：健康公告名称
 	 */
 
     public void setGonggaoName(String gonggaoName) {
         this.gonggaoName = gonggaoName;
     }
     /**
-	 * 设置：公告图片
+	 * 设置：健康公告图片
 	 */
     public String getGonggaoPhoto() {
         return gonggaoPhoto;
@@ -118,14 +118,14 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-	 * 获取：公告图片
+	 * 获取：健康公告图片
 	 */
 
     public void setGonggaoPhoto(String gonggaoPhoto) {
         this.gonggaoPhoto = gonggaoPhoto;
     }
     /**
-	 * 设置：公告类型
+	 * 设置：健康公告类型
 	 */
     public Integer getGonggaoTypes() {
         return gonggaoTypes;
@@ -133,14 +133,14 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-	 * 获取：公告类型
+	 * 获取：健康公告类型
 	 */
 
     public void setGonggaoTypes(Integer gonggaoTypes) {
         this.gonggaoTypes = gonggaoTypes;
     }
     /**
-	 * 设置：公告发布时间
+	 * 设置：健康公告发布时间
 	 */
     public Date getInsertTime() {
         return insertTime;
@@ -148,14 +148,14 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-	 * 获取：公告发布时间
+	 * 获取：健康公告发布时间
 	 */
 
     public void setInsertTime(Date insertTime) {
         this.insertTime = insertTime;
     }
     /**
-	 * 设置：公告详情
+	 * 设置：健康公告详情
 	 */
     public String getGonggaoContent() {
         return gonggaoContent;
@@ -163,7 +163,7 @@ public class GonggaoVO implements Serializable {
 
 
     /**
-	 * 获取：公告详情
+	 * 获取：健康公告详情
 	 */
 
     public void setGonggaoContent(String gonggaoContent) {

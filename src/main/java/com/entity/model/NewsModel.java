@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 
 /**
- * 新闻
+ * 健康资讯
  * 接收传参的实体类
  *（实际开发中配合移动端接口开发手动去掉些没用的字段， 后端一般用entity就够用了）
  * 取自ModelAndView 的model名称
@@ -28,25 +28,25 @@ public class NewsModel implements Serializable {
 
 
     /**
-     * 新闻名称
+     * 健康资讯名称
      */
     private String newsName;
 
 
     /**
-     * 新闻编号
+     * 健康资讯编号
      */
     private String newsUuidNumber;
 
 
     /**
-     * 新闻照片
+     * 健康资讯照片
      */
     private String newsPhoto;
 
 
     /**
-     * 新闻视频
+     * 健康资讯视频
      */
     private String newsVideo;
 
@@ -64,13 +64,13 @@ public class NewsModel implements Serializable {
 
 
     /**
-     * 新闻类型
+     * 健康资讯类型
      */
     private Integer newsTypes;
 
 
     /**
-     * 新闻热度
+     * 健康资讯热度
      */
     private Integer newsClicknum;
 
@@ -84,7 +84,7 @@ public class NewsModel implements Serializable {
 
 
     /**
-     * 新闻详情
+     * 健康资讯详情
      */
     private String newsContent;
 
@@ -132,7 +132,7 @@ public class NewsModel implements Serializable {
         this.id = id;
     }
     /**
-	 * 获取：新闻名称
+	 * 获取：健康资讯名称
 	 */
     public String getNewsName() {
         return newsName;
@@ -140,13 +140,13 @@ public class NewsModel implements Serializable {
 
 
     /**
-	 * 设置：新闻名称
+	 * 设置：健康资讯名称
 	 */
     public void setNewsName(String newsName) {
         this.newsName = newsName;
     }
     /**
-	 * 获取：新闻编号
+	 * 获取：健康资讯编号
 	 */
     public String getNewsUuidNumber() {
         return newsUuidNumber;
@@ -154,13 +154,13 @@ public class NewsModel implements Serializable {
 
 
     /**
-	 * 设置：新闻编号
+	 * 设置：健康资讯编号
 	 */
     public void setNewsUuidNumber(String newsUuidNumber) {
         this.newsUuidNumber = newsUuidNumber;
     }
     /**
-	 * 获取：新闻照片
+	 * 获取：健康资讯照片
 	 */
     public String getNewsPhoto() {
         return newsPhoto;
@@ -168,13 +168,13 @@ public class NewsModel implements Serializable {
 
 
     /**
-	 * 设置：新闻照片
+	 * 设置：健康资讯照片
 	 */
     public void setNewsPhoto(String newsPhoto) {
         this.newsPhoto = newsPhoto;
     }
     /**
-	 * 获取：新闻视频
+	 * 获取：健康资讯视频
 	 */
     public String getNewsVideo() {
         return newsVideo;
@@ -182,7 +182,7 @@ public class NewsModel implements Serializable {
 
 
     /**
-	 * 设置：新闻视频
+	 * 设置：健康资讯视频
 	 */
     public void setNewsVideo(String newsVideo) {
         this.newsVideo = newsVideo;
@@ -216,7 +216,7 @@ public class NewsModel implements Serializable {
         this.caiNumber = caiNumber;
     }
     /**
-	 * 获取：新闻类型
+	 * 获取：健康资讯类型
 	 */
     public Integer getNewsTypes() {
         return newsTypes;
@@ -224,13 +224,13 @@ public class NewsModel implements Serializable {
 
 
     /**
-	 * 设置：新闻类型
+	 * 设置：健康资讯类型
 	 */
     public void setNewsTypes(Integer newsTypes) {
         this.newsTypes = newsTypes;
     }
     /**
-	 * 获取：新闻热度
+	 * 获取：健康资讯热度
 	 */
     public Integer getNewsClicknum() {
         return newsClicknum;
@@ -238,7 +238,7 @@ public class NewsModel implements Serializable {
 
 
     /**
-	 * 设置：新闻热度
+	 * 设置：健康资讯热度
 	 */
     public void setNewsClicknum(Integer newsClicknum) {
         this.newsClicknum = newsClicknum;
@@ -258,7 +258,7 @@ public class NewsModel implements Serializable {
         this.fabuTime = fabuTime;
     }
     /**
-	 * 获取：新闻详情
+	 * 获取：健康资讯详情
 	 */
     public String getNewsContent() {
         return newsContent;
@@ -266,7 +266,7 @@ public class NewsModel implements Serializable {
 
 
     /**
-	 * 设置：新闻详情
+	 * 设置：健康资讯详情
 	 */
     public void setNewsContent(String newsContent) {
         this.newsContent = newsContent;

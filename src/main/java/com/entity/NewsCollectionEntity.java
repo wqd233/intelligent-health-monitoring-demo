@@ -19,7 +19,7 @@ import com.utils.DateUtil;
 
 
 /**
- * 新闻收藏
+ * 健康资讯收藏
  *
  * @author 
  * @email
@@ -54,9 +54,9 @@ public class NewsCollectionEntity<T> implements Serializable {
 
 
     /**
-     * 新闻
+     * 健康资讯
      */
-    @ColumnInfo(comment="新闻",type="int(11)")
+    @ColumnInfo(comment="健康资讯",type="int(11)")
     @TableField(value = "news_id")
 
     private Integer newsId;
@@ -116,13 +116,13 @@ public class NewsCollectionEntity<T> implements Serializable {
         this.id = id;
     }
     /**
-	 * 获取：新闻
+	 * 获取：健康资讯
 	 */
     public Integer getNewsId() {
         return newsId;
     }
     /**
-	 * 设置：新闻
+	 * 设置：健康资讯
 	 */
 
     public void setNewsId(Integer newsId) {

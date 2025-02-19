@@ -10,21 +10,21 @@
             <el-row>
                 <input id="updateId" name="id" type="hidden">
                <el-col :span="12">
-                   <el-form-item class="input" v-if="type!='info'"  label="公告名称" prop="gonggaoName">
+                   <el-form-item class="input" v-if="type!='info'"  label="健康公告名称" prop="gonggaoName">
                        <el-input v-model="ruleForm.gonggaoName"
-                                 placeholder="公告名称" clearable  :readonly="ro.gonggaoName"></el-input>
+                                 placeholder="健康公告名称" clearable  :readonly="ro.gonggaoName"></el-input>
                    </el-form-item>
                    <div v-else-if="type=='info'">
-                       <el-form-item class="input" label="公告名称" prop="gonggaoName">
+                       <el-form-item class="input" label="健康公告名称" prop="gonggaoName">
                            <el-input v-model="ruleForm.gonggaoName"
-                                     placeholder="公告名称" readonly></el-input>
+                                     placeholder="健康公告名称" readonly></el-input>
                        </el-form-item>
                    </div>
                </el-col>
                 <el-col :span="12">
-                    <el-form-item class="upload" v-if="type!='info' && !ro.gonggaoPhoto" label="公告图片" prop="gonggaoPhoto">
+                    <el-form-item class="upload" v-if="type!='info' && !ro.gonggaoPhoto" label="健康公告图片" prop="gonggaoPhoto">
                         <file-upload
-                            tip="点击上传公告图片"
+                            tip="点击上传健康公告图片"
                             action="file/upload"
                             :limit="3"
                             :multiple="true"
@@ -33,14 +33,14 @@
                         ></file-upload>
                     </el-form-item>
                     <div v-else>
-                        <el-form-item v-if="ruleForm.gonggaoPhoto" label="公告图片" prop="gonggaoPhoto">
+                        <el-form-item v-if="ruleForm.gonggaoPhoto" label="健康公告图片" prop="gonggaoPhoto">
                             <img style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in (ruleForm.gonggaoPhoto || '').split(',')" :src="$base.url+item" width="100" height="100">
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item class="select" v-if="type!='info'"  label="公告类型" prop="gonggaoTypes">
-                        <el-select v-model="ruleForm.gonggaoTypes" :disabled="ro.gonggaoTypes" placeholder="请选择公告类型">
+                    <el-form-item class="select" v-if="type!='info'"  label="健康公告类型" prop="gonggaoTypes">
+                        <el-select v-model="ruleForm.gonggaoTypes" :disabled="ro.gonggaoTypes" placeholder="请选择健康公告类型">
                             <el-option
                                 v-for="(item,index) in gonggaoTypesOptions"
                                 v-bind:key="item.codeIndex"
@@ -50,14 +50,14 @@
                         </el-select>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item class="input" label="公告类型" prop="gonggaoValue">
+                        <el-form-item class="input" label="健康公告类型" prop="gonggaoValue">
                         <el-input v-model="ruleForm.gonggaoValue"
-                            placeholder="公告类型" readonly></el-input>
+                            placeholder="健康公告类型" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="24">
-                    <el-form-item v-if="type!='info'"  label="公告详情" prop="gonggaoContent">
+                    <el-form-item v-if="type!='info'"  label="健康公告详情" prop="gonggaoContent">
                         <editor style="min-width: 200px; max-width: 600px;"
                                 v-model="ruleForm.gonggaoContent"
                                 class="editor"
@@ -65,7 +65,7 @@
                         </editor>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item v-if="ruleForm.gonggaoContent" label="公告详情" prop="gonggaoContent">
+                        <el-form-item v-if="ruleForm.gonggaoContent" label="健康公告详情" prop="gonggaoContent">
                             <span v-html="ruleForm.gonggaoContent"></span>
                         </el-form-item>
                     </div>
@@ -110,23 +110,23 @@
                 gonggaoTypesOptions : [],
                 rules: {
                    gonggaoName: [
-                              { required: true, message: '公告名称不能为空', trigger: 'blur' },
+                              { required: true, message: '健康公告名称不能为空', trigger: 'blur' },
                           ],
                    gonggaoPhoto: [
-                              { required: true, message: '公告图片不能为空', trigger: 'blur' },
+                              { required: true, message: '健康公告图片不能为空', trigger: 'blur' },
                           ],
                    gonggaoTypes: [
-                              { required: true, message: '公告类型不能为空', trigger: 'blur' },
+                              { required: true, message: '健康公告类型不能为空', trigger: 'blur' },
                               {  pattern: /^[0-9]*$/,
                                   message: '只允许输入整数',
                                   trigger: 'blur'
                               }
                           ],
                    insertTime: [
-                              { required: true, message: '公告发布时间不能为空', trigger: 'blur' },
+                              { required: true, message: '健康公告发布时间不能为空', trigger: 'blur' },
                           ],
                    gonggaoContent: [
-                              { required: true, message: '公告详情不能为空', trigger: 'blur' },
+                              { required: true, message: '健康公告详情不能为空', trigger: 'blur' },
                           ],
                 }
             };

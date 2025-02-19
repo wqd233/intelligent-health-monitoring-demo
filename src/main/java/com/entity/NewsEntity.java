@@ -19,7 +19,7 @@ import com.utils.DateUtil;
 
 
 /**
- * 新闻
+ * 健康资讯
  *
  * @author 
  * @email
@@ -54,36 +54,36 @@ public class NewsEntity<T> implements Serializable {
 
 
     /**
-     * 新闻名称
+     * 健康资讯名称
      */
-    @ColumnInfo(comment="新闻名称",type="varchar(200)")
+    @ColumnInfo(comment="健康资讯名称",type="varchar(200)")
     @TableField(value = "news_name")
 
     private String newsName;
 
 
     /**
-     * 新闻编号
+     * 健康资讯编号
      */
-    @ColumnInfo(comment="新闻编号",type="varchar(200)")
+    @ColumnInfo(comment="健康资讯编号",type="varchar(200)")
     @TableField(value = "news_uuid_number")
 
     private String newsUuidNumber;
 
 
     /**
-     * 新闻照片
+     * 健康资讯照片
      */
-    @ColumnInfo(comment="新闻照片",type="varchar(200)")
+    @ColumnInfo(comment="健康资讯照片",type="varchar(200)")
     @TableField(value = "news_photo")
 
     private String newsPhoto;
 
 
     /**
-     * 新闻视频
+     * 健康资讯视频
      */
-    @ColumnInfo(comment="新闻视频",type="varchar(200)")
+    @ColumnInfo(comment="健康资讯视频",type="varchar(200)")
     @TableField(value = "news_video")
 
     private String newsVideo;
@@ -108,18 +108,18 @@ public class NewsEntity<T> implements Serializable {
 
 
     /**
-     * 新闻类型
+     * 健康资讯类型
      */
-    @ColumnInfo(comment="新闻类型",type="int(11)")
+    @ColumnInfo(comment="健康资讯类型",type="int(11)")
     @TableField(value = "news_types")
 
     private Integer newsTypes;
 
 
     /**
-     * 新闻热度
+     * 健康资讯热度
      */
-    @ColumnInfo(comment="新闻热度",type="int(11)")
+    @ColumnInfo(comment="健康资讯热度",type="int(11)")
     @TableField(value = "news_clicknum")
 
     private Integer newsClicknum;
@@ -137,9 +137,9 @@ public class NewsEntity<T> implements Serializable {
 
 
     /**
-     * 新闻详情
+     * 健康资讯详情
      */
-    @ColumnInfo(comment="新闻详情",type="longtext")
+    @ColumnInfo(comment="健康资讯详情",type="longtext")
     @TableField(value = "news_content")
 
     private String newsContent;
@@ -199,52 +199,52 @@ public class NewsEntity<T> implements Serializable {
         this.id = id;
     }
     /**
-	 * 获取：新闻名称
+	 * 获取：健康资讯名称
 	 */
     public String getNewsName() {
         return newsName;
     }
     /**
-	 * 设置：新闻名称
+	 * 设置：健康资讯名称
 	 */
 
     public void setNewsName(String newsName) {
         this.newsName = newsName;
     }
     /**
-	 * 获取：新闻编号
+	 * 获取：健康资讯编号
 	 */
     public String getNewsUuidNumber() {
         return newsUuidNumber;
     }
     /**
-	 * 设置：新闻编号
+	 * 设置：健康资讯编号
 	 */
 
     public void setNewsUuidNumber(String newsUuidNumber) {
         this.newsUuidNumber = newsUuidNumber;
     }
     /**
-	 * 获取：新闻照片
+	 * 获取：健康资讯照片
 	 */
     public String getNewsPhoto() {
         return newsPhoto;
     }
     /**
-	 * 设置：新闻照片
+	 * 设置：健康资讯照片
 	 */
 
     public void setNewsPhoto(String newsPhoto) {
         this.newsPhoto = newsPhoto;
     }
     /**
-	 * 获取：新闻视频
+	 * 获取：健康资讯视频
 	 */
     public String getNewsVideo() {
         return newsVideo;
     }
     /**
-	 * 设置：新闻视频
+	 * 设置：健康资讯视频
 	 */
 
     public void setNewsVideo(String newsVideo) {
@@ -277,26 +277,26 @@ public class NewsEntity<T> implements Serializable {
         this.caiNumber = caiNumber;
     }
     /**
-	 * 获取：新闻类型
+	 * 获取：健康资讯类型
 	 */
     public Integer getNewsTypes() {
         return newsTypes;
     }
     /**
-	 * 设置：新闻类型
+	 * 设置：健康资讯类型
 	 */
 
     public void setNewsTypes(Integer newsTypes) {
         this.newsTypes = newsTypes;
     }
     /**
-	 * 获取：新闻热度
+	 * 获取：健康资讯热度
 	 */
     public Integer getNewsClicknum() {
         return newsClicknum;
     }
     /**
-	 * 设置：新闻热度
+	 * 设置：健康资讯热度
 	 */
 
     public void setNewsClicknum(Integer newsClicknum) {
@@ -316,13 +316,13 @@ public class NewsEntity<T> implements Serializable {
         this.fabuTime = fabuTime;
     }
     /**
-	 * 获取：新闻详情
+	 * 获取：健康资讯详情
 	 */
     public String getNewsContent() {
         return newsContent;
     }
     /**
-	 * 设置：新闻详情
+	 * 设置：健康资讯详情
 	 */
 
     public void setNewsContent(String newsContent) {

@@ -1,10 +1,10 @@
-<!-- 论坛中心 -->
+<!-- 健康知识交流区中心 -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>论坛</title>
+    <title>健康知识交流区</title>
     <link rel="stylesheet" href="../../layui/css/layui.css">
     <script type="text/javascript" src="../../xznstatic/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="../../xznstatic/js/jquery.SuperSlide.2.1.1.js"></script>
@@ -69,7 +69,7 @@
 
 <div id="app">
     <div class="index-title sub_backgroundColor" :style='{"padding":"10px","boxShadow":"0 0 2px rgba(160, 67, 26, 1)","margin":"10px auto","borderColor":"rgba(0,0,0,.3)","color":"rgba(255, 255, 255, 1)","borderRadius":"4px","borderWidth":"0","fontSize":"20px","borderStyle":"solid","height":"auto"}'>
-        <span>FORUM / INFORMATION</span><span>论坛</span>
+        <span>FORUM / INFORMATION</span><span>健康知识交流区</span>
     </div>
     <div class="forum-container">
                <div :style='{"padding":"0","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,1)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"10px","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
@@ -115,8 +115,8 @@
             <el-form-item label="标题" :label-width="formLabelWidth" prop="forumName">
                 <el-input v-model="ruleForm.forumName" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="帖子类型" :label-width="formLabelWidth" prop="forumTypes">
-                <el-select v-model="ruleForm.forumTypes" placeholder="帖子类型">
+            <el-form-item label="知识类型" :label-width="formLabelWidth" prop="forumTypes">
+                <el-select v-model="ruleForm.forumTypes" placeholder="知识类型">
                     <el-option v-for="item in forumTypesList" :label="item.indexName" :value="item.codeIndex"></el-option>
                 </el-select>
             </el-form-item>
@@ -168,7 +168,7 @@
                     { required: true, message: '请输入标题', trigger: 'blur' },
                 ],
                 forumTypes: [
-                    { required: true, message: '请选择帖子类型', trigger: 'blur' }
+                    { required: true, message: '请选择知识类型', trigger: 'blur' }
                 ],
                 forumContent: [
                     { required: true, message: '请输入帖子内容', trigger: 'blur' }

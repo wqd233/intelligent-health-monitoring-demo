@@ -75,7 +75,7 @@
                 <![CDATA[  and UNIX_TIMESTAMP(a.update_time) <= UNIX_TIMESTAMP(#{params.updateTimeEnd}) ]]>
             </if>
 
-                <!-- 判断新闻的id不为空 -->
+                <!-- 判断健康资讯的id不为空 -->
             <if test=" params.newsIdNotNull != '' and params.newsIdNotNull != null and params.newsIdNotNull != 'null' ">
                 and a.news_id IS NOT NULL
             </if>

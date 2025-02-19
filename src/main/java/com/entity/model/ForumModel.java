@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 
 /**
- * 论坛
+ * 健康知识交流区
  * 接收传参的实体类
  *（实际开发中配合移动端接口开发手动去掉些没用的字段， 后端一般用entity就够用了）
  * 取自ModelAndView 的model名称
@@ -28,7 +28,7 @@ public class ForumModel implements Serializable {
 
 
     /**
-     * 帖子标题
+     * 知识标题
      */
     private String forumName;
 
@@ -58,7 +58,7 @@ public class ForumModel implements Serializable {
 
 
     /**
-     * 帖子类型
+     * 知识类型
      */
     private Integer forumTypes;
 
@@ -70,7 +70,7 @@ public class ForumModel implements Serializable {
 
 
     /**
-     * 发帖时间
+     * 发布时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
@@ -108,7 +108,7 @@ public class ForumModel implements Serializable {
         this.id = id;
     }
     /**
-	 * 获取：帖子标题
+	 * 获取：知识标题
 	 */
     public String getForumName() {
         return forumName;
@@ -116,7 +116,7 @@ public class ForumModel implements Serializable {
 
 
     /**
-	 * 设置：帖子标题
+	 * 设置：知识标题
 	 */
     public void setForumName(String forumName) {
         this.forumName = forumName;
@@ -178,7 +178,7 @@ public class ForumModel implements Serializable {
         this.superIds = superIds;
     }
     /**
-	 * 获取：帖子类型
+	 * 获取：知识类型
 	 */
     public Integer getForumTypes() {
         return forumTypes;
@@ -186,7 +186,7 @@ public class ForumModel implements Serializable {
 
 
     /**
-	 * 设置：帖子类型
+	 * 设置：知识类型
 	 */
     public void setForumTypes(Integer forumTypes) {
         this.forumTypes = forumTypes;
@@ -206,7 +206,7 @@ public class ForumModel implements Serializable {
         this.forumStateTypes = forumStateTypes;
     }
     /**
-	 * 获取：发帖时间
+	 * 获取：发布时间
 	 */
     public Date getInsertTime() {
         return insertTime;
@@ -214,7 +214,7 @@ public class ForumModel implements Serializable {
 
 
     /**
-	 * 设置：发帖时间
+	 * 设置：发布时间
 	 */
     public void setInsertTime(Date insertTime) {
         this.insertTime = insertTime;

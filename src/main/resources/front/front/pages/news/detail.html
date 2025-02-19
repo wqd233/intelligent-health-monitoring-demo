@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>新闻详情页</title>
+    <title>健康资讯详情页</title>
     <link rel="stylesheet" href="../../layui/css/layui.css">
     <!-- 样式 -->
     <link rel="stylesheet" href="../../css/style.css"/>
@@ -368,7 +368,7 @@
                         <div class="blog-details-header">
                             <h3 class="blog-details-title">{{title}}</h3>
                             <ul class="post-meta">
-                                <li v-if="detail.newsUuidNumber">新闻编号：
+                                <li v-if="detail.newsUuidNumber">健康资讯编号：
                                     {{detail.newsUuidNumber}}
                                 </li>
                                 <li v-if="detail.zanNumber">赞：
@@ -377,10 +377,10 @@
                                 <li v-if="detail.caiNumber">踩：
                                     {{detail.caiNumber}}
                                 </li>
-                                <li v-if="detail.newsTypes">新闻类型：
+                                <li v-if="detail.newsTypes">健康资讯类型：
                                     {{detail.newsValue}}
                                 </li>
-                                <li v-if="detail.newsClicknum">新闻热度：
+                                <li v-if="detail.newsClicknum">健康资讯热度：
                                     {{detail.newsClicknum}}
                                 </li>
                                 <li v-if="detail.fabuTime">发布时间：

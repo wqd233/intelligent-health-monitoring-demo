@@ -9,7 +9,7 @@ import org.springframework.lang.Nullable;
 import java.util.List;
 
 /**
- * 论坛 服务类
+ * 健康知识交流区 服务类
  */
 public interface ForumService extends IService<ForumEntity> {
 

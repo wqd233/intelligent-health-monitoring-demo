@@ -28,7 +28,7 @@ const menu = {
                             "删除",
                             "修改"
                         ],
-                        "menu":"帖子类型管理",
+                        "menu":"知识类型管理",
                         "menuJump":"列表",
                         "tableName":"dictionaryForum"
                     }
@@ -40,7 +40,7 @@ const menu = {
                             "删除",
                             "修改"
                         ],
-                        "menu":"公告类型管理",
+                        "menu":"健康公告类型管理",
                         "menuJump":"列表",
                         "tableName":"dictionaryGonggao"
                     }
@@ -64,7 +64,7 @@ const menu = {
                             "删除",
                             "修改"
                         ],
-                        "menu":"新闻类型管理",
+                        "menu":"健康资讯类型管理",
                         "menuJump":"列表",
                         "tableName":"dictionaryNews"
                     }
@@ -128,12 +128,12 @@ const menu = {
                             "修改",
                             "删除"
                         ],
-                        "menu":"论坛管理",
+                        "menu":"健康知识交流区管理",
                         "menuJump":"列表",
                         "tableName":"forum"
                     }
                 ],
-                "menu":"论坛管理"
+                "menu":"健康知识交流区管理"
             }
             ,{
                 "child":[
@@ -144,12 +144,12 @@ const menu = {
                             "修改",
                             "删除"
                         ],
-                        "menu":"公告管理",
+                        "menu":"健康公告管理",
                         "menuJump":"列表",
                         "tableName":"gonggao"
                     }
                 ],
-                "menu":"公告管理"
+                "menu":"健康公告管理"
             }
             ,{
                 "child":[
@@ -176,7 +176,7 @@ const menu = {
                             "修改",
                             "删除"
                         ],
-                        "menu":"新闻管理",
+                        "menu":"健康资讯管理",
                         "menuJump":"列表",
                         "tableName":"news"
                     }
@@ -187,7 +187,7 @@ const menu = {
                             "修改",
                             "删除"
                         ],
-                        "menu":"新闻留言管理",
+                        "menu":"健康资讯留言管理",
                         "menuJump":"列表",
                         "tableName":"newsLiuyan"
                     }
@@ -197,12 +197,12 @@ const menu = {
                             "查看",
                             "删除"
                         ],
-                        "menu":"新闻收藏管理",
+                        "menu":"健康资讯收藏管理",
                         "menuJump":"列表",
                         "tableName":"newsCollection"
                     }
                 ],
-                "menu":"新闻管理"
+                "menu":"健康资讯管理"
             }
             ,{
                 "child":[

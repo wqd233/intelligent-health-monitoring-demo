@@ -8,7 +8,7 @@
                     append-to-body>
             </el-dialog>
             <div class="demo-input-suffix">
-                <span style="width: 20%">帖子标题：</span><el-input v-model="forumTitle" :disabled="true" placeholder="帖子标题" style="width: 80%"></el-input>
+                <span style="width: 20%">知识标题：</span><el-input v-model="forumTitle" :disabled="true" placeholder="知识标题" style="width: 80%"></el-input>
             </div>
             <div class="demo-input-suffix">
                 <span style="width: 20%">帖子内容：</span><span style="width: 80%;height: 20%;" v-html="forumContent"></span>
@@ -55,7 +55,7 @@
                     <template slot-scope="scope">
                         <el-button type="info"                          @click="seeForumContent(scope.row.forumContent)">回帖详情</el-button>
                             <el-button v-if="true &&( false|| (sessionTable == 'yonghu' && scope.row.yonghuId ==userId)
-|| sessionTable == 'users')" type="danger" icon="el-icon-delete" size="mini" @click="deleteHandler(scope.row.id)">删除帖子</el-button>
+|| sessionTable == 'users')" type="danger" icon="el-icon-delete" size="mini" @click="deleteHandler(scope.row.id)">删除知识</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -73,12 +73,12 @@
             <el-form :inline="true" :model="searchForm" class="form-content">
                 <el-row :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
                  
-                     <el-form-item :label="contents.inputTitle == 1 ? '帖子标题' : ''">
-                         <el-input prefix-icon="el-icon-search" v-model="searchForm.forumName" placeholder="帖子标题" clearable></el-input>
+                     <el-form-item :label="contents.inputTitle == 1 ? '知识标题' : ''">
+                         <el-input prefix-icon="el-icon-search" v-model="searchForm.forumName" placeholder="知识标题" clearable></el-input>
                      </el-form-item>
                                          
-                     <el-form-item :label="contents.inputTitle == 1 ? '帖子类型' : ''">
-                        <el-select v-model="searchForm.forumTypes" placeholder="请选择帖子类型">
+                     <el-form-item :label="contents.inputTitle == 1 ? '知识类型' : ''">
+                        <el-select v-model="searchForm.forumTypes" placeholder="请选择知识类型">
                             <el-option label="=-请选择-=" value=""></el-option>
                             <el-option
                                v-for="(item,index) in forumTypesSelectSearch"
@@ -122,7 +122,7 @@
                            v-if="isAuth('forum','导入导出')"
                            icon="el-icon-download"
                            href="http://localhost:8080/intelligent-health-monitoring-demo/upload/forumMuBan.xls"
-                        >批量导入论坛数据模板</a>
+                        >批量导入健康知识交流区数据模板</a>
                         &nbsp;
                         <el-upload
                                 v-if="isAuth('forum','导入导出')"
@@ -135,7 +135,7 @@
                                     v-if="isAuth('forum','导入导出')"
                                     type="success"
                                     icon="el-icon-upload2"
-                            >批量导入论坛数据</el-button>
+                            >批量导入健康知识交流区数据</el-button>
                         </el-upload>
                         &nbsp;
                         <!-- 导出excel -->
@@ -218,7 +218,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="forumTypes"
                                       header-align="center"
-                                      label="帖子类型">
+                                      label="知识类型">
                         <template slot-scope="scope">
                             {{scope.row.forumValue}}
                         </template>
@@ -226,7 +226,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="forumName"
                                       header-align="center"
-                                      label="帖子标题">
+                                      label="知识标题">
                         <template slot-scope="scope">
                             {{scope.row.forumName}}
                         </template>
@@ -242,7 +242,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                       prop="insertTime"
                       header-align="center"
-                      label="发帖时间">
+                      label="发布时间">
                         <template slot-scope="scope">
                             {{scope.row.insertTime}}
                         </template>
@@ -255,11 +255,11 @@
                             <el-button v-if="sessionTable=='false'" type="primary" size="mini" @click="wuyong(scope.row.id)">无用按钮</el-button>
                             <el-button v-if="sessionTable=='false'" type="success" icon="el-icon-printer" size="mini" @click="dayinOpen(scope.row)">打印</el-button>
                             <el-button v-if="isAuth('forum','查看')" type="success" icon="el-icon-tickets" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">详情</el-button>
-                            <el-button v-if="isAuth('forum','查看')" type="primary" icon="el-icon-edit" size="mini" @click="openReplyForum(scope.row.id,scope.row.forumName,scope.row.forumContent)">查看论坛回复</el-button>
+                            <el-button v-if="isAuth('forum','查看')" type="primary" icon="el-icon-edit" size="mini" @click="openReplyForum(scope.row.id,scope.row.forumName,scope.row.forumContent)">查看健康知识交流区回复</el-button>
                             <el-button v-if="isAuth('forum','修改')" type="primary" icon="el-icon-edit" size="mini" @click="addOrUpdateHandler(scope.row.id)">修改</el-button>
 
                             <el-button v-if="true &&( false|| (sessionTable == 'yonghu' && scope.row.yonghuId ==userId)
-|| sessionTable == 'users')" type="danger" icon="el-icon-delete" size="mini" @click="deleteHandler(scope.row.id)">删除帖子</el-button>
+|| sessionTable == 'users')" type="danger" icon="el-icon-delete" size="mini" @click="deleteHandler(scope.row.id)">删除知识</el-button>
 
                         </template>
                     </el-table-column>
@@ -365,14 +365,14 @@
             contents:null,
             layouts: '',
 
-            forumReplyDialogVisible : false,//论坛回复模态框
-            forumReplyInfoDialogVisible : false,//论坛回复详情模态框
+            forumReplyDialogVisible : false,//健康知识交流区回复模态框
+            forumReplyInfoDialogVisible : false,//健康知识交流区回复详情模态框
             superIds : "",//帖子id
-            forumTitle : "",//帖子标题
+            forumTitle : "",//知识标题
             forumContent : "",//帖子内容
             forumReplyContent : "",//帖子回复内容
             forumReplyInfoContent : "",//帖子某个回复详情 全
-            forumData : [],//论坛回复数据集合
+            forumData : [],//健康知识交流区回复数据集合
 
             //导出excel
             json_fields: {
@@ -386,11 +386,11 @@
                      '角色': 'role',
                      '新增时间': 'addtime',
                 //本表字段
-                     '帖子标题': "forumName",
+                     '知识标题': "forumName",
                      '父id': "superIds",
-                     '帖子类型': "forumValue",
+                     '知识类型': "forumValue",
                      '帖子状态': "forumStateValue",
-                     '发帖时间': "insertTime",
+                     '发布时间': "insertTime",
                      '修改时间': "updateTime",
             },
 
@@ -904,7 +904,7 @@
                 }).then(({data}) => {
                     if(data && data.code === 0){
                         _this.$message({
-                            message: "导入论坛数据成功",
+                            message: "导入健康知识交流区数据成功",
                             type: "success",
                             duration: 1500,
                             onClose: () => {
@@ -931,8 +931,8 @@
                 _this.forumContent = forumContent.replace("<img","<img  style=\"width:100%\"").replace("src=\"upload/","src=\""+_this.$base.url+ "upload/");
             // 当前帖子相关 end
                 _this.forumReplyContent = "";//帖子回复
-                _this.forumReplyDialogVisible = true;//论坛回复模态框
-                _this.forumReplyInfoDialogVisible = false;//论坛回复详情模态框
+                _this.forumReplyDialogVisible = true;//健康知识交流区回复模态框
+                _this.forumReplyInfoDialogVisible = false;//健康知识交流区回复详情模态框
 
 
                 // 查看当前帖子的回复列表
@@ -983,7 +983,7 @@
             seeForumContent(forumContent) {
                 let _this = this;
                 _this.forumReplyInfoContent = forumContent;//帖子某个回复详情 全
-                _this.forumReplyInfoDialogVisible = true;//论坛回复详情模态框
+                _this.forumReplyInfoDialogVisible = true;//健康知识交流区回复详情模态框
             },
             // 删除数据
             deleteForumData(id){

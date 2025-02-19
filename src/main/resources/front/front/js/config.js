@@ -37,7 +37,7 @@ var centerMenu = [
         url: '../jiankangrizhi/list.html'
     }
     , {
-        name: '新闻收藏',
+        name: '健康资讯收藏',
         url: '../newsCollection/list.html'
     }
 
@@ -47,15 +47,15 @@ var centerMenu = [
 var indexNav = [
 
     {
-        name: '论坛111',
+        name: '健康知识交流区',
         url: './pages/forum/list.html'
     },
     {
-        name: '公告222',
+        name: '健康公告',
         url: './pages/gonggao/list.html'
     },
     {
-        name: '新闻333',
+        name: '健康资讯',
         url: './pages/news/list.html'
     },
 

@@ -19,7 +19,7 @@ import com.utils.DateUtil;
 
 
 /**
- * 公告
+ * 健康公告
  *
  * @author 
  * @email
@@ -54,47 +54,47 @@ public class GonggaoEntity<T> implements Serializable {
 
 
     /**
-     * 公告名称
+     * 健康公告名称
      */
-    @ColumnInfo(comment="公告名称",type="varchar(200)")
+    @ColumnInfo(comment="健康公告名称",type="varchar(200)")
     @TableField(value = "gonggao_name")
 
     private String gonggaoName;
 
 
     /**
-     * 公告图片
+     * 健康公告图片
      */
-    @ColumnInfo(comment="公告图片",type="varchar(200)")
+    @ColumnInfo(comment="健康公告图片",type="varchar(200)")
     @TableField(value = "gonggao_photo")
 
     private String gonggaoPhoto;
 
 
     /**
-     * 公告类型
+     * 健康公告类型
      */
-    @ColumnInfo(comment="公告类型",type="int(11)")
+    @ColumnInfo(comment="健康公告类型",type="int(11)")
     @TableField(value = "gonggao_types")
 
     private Integer gonggaoTypes;
 
 
     /**
-     * 公告发布时间
+     * 健康公告发布时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
-    @ColumnInfo(comment="公告发布时间",type="timestamp")
+    @ColumnInfo(comment="健康公告发布时间",type="timestamp")
     @TableField(value = "insert_time",fill = FieldFill.INSERT)
 
     private Date insertTime;
 
 
     /**
-     * 公告详情
+     * 健康公告详情
      */
-    @ColumnInfo(comment="公告详情",type="longtext")
+    @ColumnInfo(comment="健康公告详情",type="longtext")
     @TableField(value = "gonggao_content")
 
     private String gonggaoContent;
@@ -125,65 +125,65 @@ public class GonggaoEntity<T> implements Serializable {
         this.id = id;
     }
     /**
-	 * 获取：公告名称
+	 * 获取：健康公告名称
 	 */
     public String getGonggaoName() {
         return gonggaoName;
     }
     /**
-	 * 设置：公告名称
+	 * 设置：健康公告名称
 	 */
 
     public void setGonggaoName(String gonggaoName) {
         this.gonggaoName = gonggaoName;
     }
     /**
-	 * 获取：公告图片
+	 * 获取：健康公告图片
 	 */
     public String getGonggaoPhoto() {
         return gonggaoPhoto;
     }
     /**
-	 * 设置：公告图片
+	 * 设置：健康公告图片
 	 */
 
     public void setGonggaoPhoto(String gonggaoPhoto) {
         this.gonggaoPhoto = gonggaoPhoto;
     }
     /**
-	 * 获取：公告类型
+	 * 获取：健康公告类型
 	 */
     public Integer getGonggaoTypes() {
         return gonggaoTypes;
     }
     /**
-	 * 设置：公告类型
+	 * 设置：健康公告类型
 	 */
 
     public void setGonggaoTypes(Integer gonggaoTypes) {
         this.gonggaoTypes = gonggaoTypes;
     }
     /**
-	 * 获取：公告发布时间
+	 * 获取：健康公告发布时间
 	 */
     public Date getInsertTime() {
         return insertTime;
     }
     /**
-	 * 设置：公告发布时间
+	 * 设置：健康公告发布时间
 	 */
 
     public void setInsertTime(Date insertTime) {
         this.insertTime = insertTime;
     }
     /**
-	 * 获取：公告详情
+	 * 获取：健康公告详情
 	 */
     public String getGonggaoContent() {
         return gonggaoContent;
     }
     /**
-	 * 设置：公告详情
+	 * 设置：健康公告详情
 	 */
 
     public void setGonggaoContent(String gonggaoContent) {

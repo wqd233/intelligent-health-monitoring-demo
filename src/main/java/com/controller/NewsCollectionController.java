@@ -33,7 +33,7 @@ import com.utils.R;
 import com.alibaba.fastjson.*;
 
 /**
- * 新闻收藏
+ * 健康资讯收藏
  * 后端接口
  * @author
  * @email
@@ -56,15 +56,15 @@ public class NewsCollectionController {
     @Autowired
     private DictionaryService dictionaryService;//字典
     @Autowired
-    private ForumService forumService;//论坛
+    private ForumService forumService;//健康知识交流区
     @Autowired
-    private GonggaoService gonggaoService;//公告
+    private GonggaoService gonggaoService;//健康公告
     @Autowired
     private JiankangrizhiService jiankangrizhiService;//健康日志
     @Autowired
-    private NewsService newsService;//新闻
+    private NewsService newsService;//健康资讯
     @Autowired
-    private NewsLiuyanService newsLiuyanService;//新闻留言
+    private NewsLiuyanService newsLiuyanService;//健康资讯留言
     @Autowired
     private YonghuService yonghuService;//用户
     @Autowired
@@ -105,7 +105,7 @@ public class NewsCollectionController {
             //entity转view
             NewsCollectionView view = new NewsCollectionView();
             BeanUtils.copyProperties( newsCollection , view );//把实体数据重构到view中
-            //级联表 新闻
+            //级联表 健康资讯
             //级联表
             NewsEntity news = newsService.selectById(newsCollection.getNewsId());
             if(news != null){
@@ -222,7 +222,7 @@ public class NewsCollectionController {
                         for(List<String> data:dataList){
                             //循环
                             NewsCollectionEntity newsCollectionEntity = new NewsCollectionEntity();
-//                            newsCollectionEntity.setNewsId(Integer.valueOf(data.get(0)));   //新闻 要改的
+//                            newsCollectionEntity.setNewsId(Integer.valueOf(data.get(0)));   //健康资讯 要改的
 //                            newsCollectionEntity.setYonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
 //                            newsCollectionEntity.setNewsCollectionTypes(Integer.valueOf(data.get(0)));   //类型 要改的
 //                            newsCollectionEntity.setInsertTime(date);//时间

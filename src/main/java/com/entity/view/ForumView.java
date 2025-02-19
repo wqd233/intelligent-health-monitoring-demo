@@ -13,7 +13,7 @@ import java.util.Date;
 import com.utils.DateUtil;
 
 /**
-* 论坛
+* 健康知识交流区
 * 后端返回视图实体辅助类
 * （通常后端关联的表或者自定义的字段需要返回使用）
 */
@@ -23,9 +23,9 @@ public class ForumView extends ForumEntity implements Serializable {
 
 	//当前表
 	/**
-	* 帖子类型的值
+	* 知识类型的值
 	*/
-	@ColumnInfo(comment="帖子类型的字典表值",type="varchar(200)")
+	@ColumnInfo(comment="知识类型的字典表值",type="varchar(200)")
 	private String forumValue;
 	/**
 	* 帖子状态的值
@@ -105,13 +105,13 @@ public class ForumView extends ForumEntity implements Serializable {
 
 	//当前表的
 	/**
-	* 获取： 帖子类型的值
+	* 获取： 知识类型的值
 	*/
 	public String getForumValue() {
 		return forumValue;
 	}
 	/**
-	* 设置： 帖子类型的值
+	* 设置： 知识类型的值
 	*/
 	public void setForumValue(String forumValue) {
 		this.forumValue = forumValue;

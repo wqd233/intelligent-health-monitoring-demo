@@ -6,12 +6,12 @@
             <el-form :inline="true" :model="searchForm" class="form-content">
                 <el-row :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
                  
-                     <el-form-item :label="contents.inputTitle == 1 ? '新闻名称' : ''">
-                         <el-input prefix-icon="el-icon-search" v-model="searchForm.newsName" placeholder="新闻名称" clearable></el-input>
+                     <el-form-item :label="contents.inputTitle == 1 ? '健康资讯名称' : ''">
+                         <el-input prefix-icon="el-icon-search" v-model="searchForm.newsName" placeholder="健康资讯名称" clearable></el-input>
                      </el-form-item>
                                                  
-                     <el-form-item :label="contents.inputTitle == 1 ? '新闻类型' : ''">
-                        <el-select v-model="searchForm.newsTypes" placeholder="请选择新闻类型">
+                     <el-form-item :label="contents.inputTitle == 1 ? '健康资讯类型' : ''">
+                        <el-select v-model="searchForm.newsTypes" placeholder="请选择健康资讯类型">
                             <el-option label="=-请选择-=" value=""></el-option>
                             <el-option
                                v-for="(item,index) in newsTypesSelectSearch"
@@ -59,7 +59,7 @@
                            v-if="isAuth('news','导入导出')"
                            icon="el-icon-download"
                            href="http://localhost:8080/intelligent-health-monitoring-demo/upload/newsMuBan.xls"
-                        >批量导入新闻数据模板</a>
+                        >批量导入健康资讯数据模板</a>
                         &nbsp;
                         <el-upload
                                 v-if="isAuth('news','导入导出')"
@@ -72,7 +72,7 @@
                                     v-if="isAuth('news','导入导出')"
                                     type="success"
                                     icon="el-icon-upload2"
-                            >批量导入新闻数据</el-button>
+                            >批量导入健康资讯数据</el-button>
                         </el-upload>
                         &nbsp;
                         <!-- 导出excel -->
@@ -111,7 +111,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                    prop="newsName"
                                    header-align="center"
-                                   label="新闻名称">
+                                   label="健康资讯名称">
                         <template slot-scope="scope">
                             {{scope.row.newsName}}
                         </template>
@@ -120,7 +120,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                    prop="newsUuidNumber"
                                    header-align="center"
-                                   label="新闻编号">
+                                   label="健康资讯编号">
                         <template slot-scope="scope">
                             {{scope.row.newsUuidNumber}}
                         </template>
@@ -128,7 +128,7 @@
                     <el-table-column :sortable="contents.tableSortable" :align="contents.tableAlign" prop="newsPhoto"
                                      header-align="center"
                                      width="200"
-                                     label="新闻照片">
+                                     label="健康资讯照片">
                         <template slot-scope="scope">
                             <div v-if="scope.row.newsPhoto">
                                 <img :src="$base.url+scope.row.newsPhoto" width="100" height="100">
@@ -139,7 +139,7 @@
                     <el-table-column :sortable="contents.tableSortable" :align="contents.tableAlign" prop="newsVideo"
                                      header-align="center"
                                      width="200"
-                                     label="新闻视频">
+                                     label="健康资讯视频">
                         <template slot-scope="scope">
                             <div v-if="scope.row.newsVideo">
                                 <video :src="$base.url+scope.row.newsVideo" width="100" height="100" controls="controls">
@@ -167,7 +167,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="newsTypes"
                                       header-align="center"
-                                      label="新闻类型">
+                                      label="健康资讯类型">
                         <template slot-scope="scope">
                             {{scope.row.newsValue}}
                         </template>
@@ -175,7 +175,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="newsClicknum"
                                       header-align="center"
-                                      label="新闻热度">
+                                      label="健康资讯热度">
                         <template slot-scope="scope">
                             {{scope.row.newsClicknum}}
                         </template>
@@ -330,14 +330,14 @@
             json_fields: {
                 //级联表字段
                 //本表字段
-                     '新闻名称': "newsName",
-                     '新闻编号': "newsUuidNumber",
-                     '新闻照片': "newsPhoto",
-                     '新闻视频': "newsVideo",
+                     '健康资讯名称': "newsName",
+                     '健康资讯编号': "newsUuidNumber",
+                     '健康资讯照片': "newsPhoto",
+                     '健康资讯视频': "newsVideo",
                      '赞': "zanNumber",
                      '踩': "caiNumber",
-                     '新闻类型': "newsValue",
-                     '新闻热度': "newsClicknum",
+                     '健康资讯类型': "newsValue",
+                     '健康资讯热度': "newsClicknum",
                      '发布时间': "fabuTime",
                      '是否上架': "shangxiaValue",
                      '录入时间': "insertTime",
@@ -847,7 +847,7 @@
                 }).then(({data}) => {
                     if(data && data.code === 0){
                         _this.$message({
-                            message: "导入新闻数据成功",
+                            message: "导入健康资讯数据成功",
                             type: "success",
                             duration: 1500,
                             onClose: () => {

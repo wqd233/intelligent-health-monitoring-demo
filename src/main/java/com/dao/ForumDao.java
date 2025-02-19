@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import com.entity.view.ForumView;
 
 /**
- * 论坛 Dao 接口
+ * 健康知识交流区 Dao 接口
  *
  * @author 
  */

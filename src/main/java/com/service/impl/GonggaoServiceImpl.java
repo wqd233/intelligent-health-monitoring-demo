@@ -24,7 +24,7 @@ import com.service.GonggaoService;
 import com.entity.view.GonggaoView;
 
 /**
- * 公告 服务实现类
+ * 健康公告 服务实现类
  */
 @Service("gonggaoService")
 @Transactional

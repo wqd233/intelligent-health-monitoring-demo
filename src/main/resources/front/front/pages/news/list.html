@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>新闻</title>
+    <title>健康资讯</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="renderer" content="webkit">
@@ -205,7 +205,7 @@
     .layui-laypage .layui-laypage-skip {
         padding-left: 10px;
     }
-    /*新闻标题样式*/
+    /*健康资讯标题样式*/
     .recommend .box .news .list-item .list-item-body .item-info .name {
         padding-top: 5px;
         color: red;
@@ -217,7 +217,7 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
     }
-    /*新闻内容样式*/
+    /*健康资讯内容样式*/
     .recommend .box .news .list-item .list-item-body .item-info .time {
         padding-top: 5px;
         color: red;
@@ -246,7 +246,7 @@
                     <div style="display: inline-block;text-align: center;cursor: pointer;"
                          class="thisTableType-search main_backgroundColor" index=""
                          :style='searchForm.newsTypes=="" || searchForm.newsTypes==null?{"padding":"0 10px","boxShadow":"0 0 6px rgba(0,0,0,.3)","margin":"0 10px 0 0","borderColor":"rgba(0,0,0,1)","color":"#fff","borderRadius":"10px","borderWidth":"0","lineHeight":"34px","fontSize":"14px","borderStyle":"solid"}:{"padding":"0 10px","boxShadow":"0 0 6px rgba(0,0,0,.3)","margin":"0 10px 0 0","borderColor":"rgba(0,0,0,1)","backgroundColor":"#fff","color":"#333","borderRadius":"10px","borderWidth":"0","lineHeight":"34px","fontSize":"14px","borderStyle":"solid"}'>
-                        新闻类型全部
+                        健康资讯类型全部
                     </div>
                     <div v-for="(item,index) in newsTypesList" :key="item.codeIndex"
                          class="thisTableType-search main_backgroundColor" :index="item.codeIndex"
@@ -258,10 +258,10 @@
             <div class="title sub_backgroundColor sub_borderColor"
                  :style='{"padding":"10px 0 10px 0","margin":"10px 0 10px 0","borderRadius":"4px","borderWidth":"1px","borderStyle":"solid","justifyContent":"space-between","height":"54px"}'>
                     <span :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(255,0,0,0)","borderColor":"rgba(255,0,0,1)","backgroundColor":"rgba(0,0,0,0)","color":"rgba(11, 11, 11, 1)","borderRadius":"0 0 2px 0","borderWidth":"0","fontSize":"18px","borderStyle":"solid"}'>
-                    新闻
+                    健康资讯
                     </span>
                 <span :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(255,0,0,0)","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"rgba(255, 255, 255, 1)","borderRadius":"0","borderWidth":"0","fontSize":"16px","borderStyle":"solid"}'>
-                    您现在的位置：新闻
+                    您现在的位置：健康资讯
                 </span>
             </div>
             <form class="layui-form filter main_backgroundColor"
@@ -270,11 +270,11 @@
 <div class="item-list">
     <div class="lable"
          :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"transparent","color":"rgba(17, 16, 16, 1)","borderRadius":"0","textAlign":"right","borderWidth":"0","width":"auto","fontSize":"16px","borderStyle":"solid"}'>
-    新闻名称
+    健康资讯名称
     </div>
     <input type="text" v-model="searchForm.newsName"
            :style='{"boxShadow":"0 0 6px rgba(255,0,0,0)","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(135, 206, 250, 1)","borderRadius":"8px","textAlign":"center","borderWidth":"0","width":"140px","fontSize":"14px","borderStyle":"solid","height":"44px"}'
-           placeholder="新闻名称"
+           placeholder="健康资讯名称"
            autocomplete="off"
            class="layui-input">
 </div>                         
@@ -471,16 +471,16 @@
 
 
 
-        //新闻类型的动态搜素
+        //健康资讯类型的动态搜素
         $(document).on("click", ".thisTableType-search", function (e) {
             vue.searchForm.newsTypes = $(this).attr('index');
             pageList();
         });
 
 
-            //当前表的 新闻类型 字段 字典表查询
+            //当前表的 健康资讯类型 字段 字典表查询
             newsTypesSelect();
-                                                                           //当前表的 新闻类型 字段 字典表查询方法
+                                                                           //当前表的 健康资讯类型 字段 字典表查询方法
            function newsTypesSelect() {
                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types", 'get', {}, function (res) {
                    if(res.code == 0){

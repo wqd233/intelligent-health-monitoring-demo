@@ -6,12 +6,12 @@
             <el-form :inline="true" :model="searchForm" class="form-content">
                 <el-row :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
                  
-                     <el-form-item :label="contents.inputTitle == 1 ? '公告名称' : ''">
-                         <el-input prefix-icon="el-icon-search" v-model="searchForm.gonggaoName" placeholder="公告名称" clearable></el-input>
+                     <el-form-item :label="contents.inputTitle == 1 ? '健康公告名称' : ''">
+                         <el-input prefix-icon="el-icon-search" v-model="searchForm.gonggaoName" placeholder="健康公告名称" clearable></el-input>
                      </el-form-item>
                  
-                     <el-form-item :label="contents.inputTitle == 1 ? '公告类型' : ''">
-                        <el-select v-model="searchForm.gonggaoTypes" placeholder="请选择公告类型">
+                     <el-form-item :label="contents.inputTitle == 1 ? '健康公告类型' : ''">
+                        <el-select v-model="searchForm.gonggaoTypes" placeholder="请选择健康公告类型">
                             <el-option label="=-请选择-=" value=""></el-option>
                             <el-option
                                v-for="(item,index) in gonggaoTypesSelectSearch"
@@ -59,7 +59,7 @@
                            v-if="isAuth('gonggao','导入导出')"
                            icon="el-icon-download"
                            href="http://localhost:8080/intelligent-health-monitoring-demo/upload/gonggaoMuBan.xls"
-                        >批量导入公告数据模板</a>
+                        >批量导入健康公告数据模板</a>
                         &nbsp;
                         <el-upload
                                 v-if="isAuth('gonggao','导入导出')"
@@ -72,7 +72,7 @@
                                     v-if="isAuth('gonggao','导入导出')"
                                     type="success"
                                     icon="el-icon-upload2"
-                            >批量导入公告数据</el-button>
+                            >批量导入健康公告数据</el-button>
                         </el-upload>
                         &nbsp;
                         <!-- 导出excel -->
@@ -111,7 +111,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                    prop="gonggaoName"
                                    header-align="center"
-                                   label="公告名称">
+                                   label="健康公告名称">
                         <template slot-scope="scope">
                             {{scope.row.gonggaoName}}
                         </template>
@@ -119,7 +119,7 @@
                     <el-table-column :sortable="contents.tableSortable" :align="contents.tableAlign" prop="gonggaoPhoto"
                                      header-align="center"
                                      width="200"
-                                     label="公告图片">
+                                     label="健康公告图片">
                         <template slot-scope="scope">
                             <div v-if="scope.row.gonggaoPhoto">
                                 <img :src="$base.url+scope.row.gonggaoPhoto" width="100" height="100">
@@ -130,7 +130,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="gonggaoTypes"
                                       header-align="center"
-                                      label="公告类型">
+                                      label="健康公告类型">
                         <template slot-scope="scope">
                             {{scope.row.gonggaoValue}}
                         </template>
@@ -139,7 +139,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                    prop="insertTime"
                                    header-align="center"
-                                   label="公告发布时间">
+                                   label="健康公告发布时间">
                         <template slot-scope="scope">
                             {{scope.row.insertTime}}
                         </template>
@@ -259,10 +259,10 @@
             json_fields: {
                 //级联表字段
                 //本表字段
-                     '公告名称': "gonggaoName",
-                     '公告图片': "gonggaoPhoto",
-                     '公告类型': "gonggaoValue",
-                     '公告发布时间': "insertTime",
+                     '健康公告名称': "gonggaoName",
+                     '健康公告图片': "gonggaoPhoto",
+                     '健康公告类型': "gonggaoValue",
+                     '健康公告发布时间': "insertTime",
             },
 
             };
@@ -769,7 +769,7 @@
                 }).then(({data}) => {
                     if(data && data.code === 0){
                         _this.$message({
-                            message: "导入公告数据成功",
+                            message: "导入健康公告数据成功",
                             type: "success",
                             duration: 1500,
                             onClose: () => {

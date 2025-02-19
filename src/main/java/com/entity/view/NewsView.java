@@ -13,7 +13,7 @@ import java.util.Date;
 import com.utils.DateUtil;
 
 /**
-* 新闻
+* 健康资讯
 * 后端返回视图实体辅助类
 * （通常后端关联的表或者自定义的字段需要返回使用）
 */
@@ -23,9 +23,9 @@ public class NewsView extends NewsEntity implements Serializable {
 
 	//当前表
 	/**
-	* 新闻类型的值
+	* 健康资讯类型的值
 	*/
-	@ColumnInfo(comment="新闻类型的字典表值",type="varchar(200)")
+	@ColumnInfo(comment="健康资讯类型的字典表值",type="varchar(200)")
 	private String newsValue;
 	/**
 	* 是否上架的值
@@ -53,13 +53,13 @@ public class NewsView extends NewsEntity implements Serializable {
 
 	//当前表的
 	/**
-	* 获取： 新闻类型的值
+	* 获取： 健康资讯类型的值
 	*/
 	public String getNewsValue() {
 		return newsValue;
 	}
 	/**
-	* 设置： 新闻类型的值
+	* 设置： 健康资讯类型的值
 	*/
 	public void setNewsValue(String newsValue) {
 		this.newsValue = newsValue;

@@ -88,7 +88,7 @@ const routes = [{
     }
     ,{
         path: '/dictionaryForum',
-        name: '帖子类型',
+        name: '知识类型',
         component: dictionaryForum
     }
     ,{
@@ -98,7 +98,7 @@ const routes = [{
     }
     ,{
         path: '/dictionaryGonggao',
-        name: '公告类型',
+        name: '健康公告类型',
         component: dictionaryGonggao
     }
     ,{
@@ -108,7 +108,7 @@ const routes = [{
     }
     ,{
         path: '/dictionaryNews',
-        name: '新闻类型',
+        name: '健康资讯类型',
         component: dictionaryNews
     }
     ,{
@@ -165,12 +165,12 @@ const routes = [{
       }
     ,{
         path: '/forum',
-        name: '论坛',
+        name: '健康知识交流区',
         component: forum
       }
     ,{
         path: '/gonggao',
-        name: '公告',
+        name: '健康公告',
         component: gonggao
       }
     ,{
@@ -180,17 +180,17 @@ const routes = [{
       }
     ,{
         path: '/news',
-        name: '新闻',
+        name: '健康资讯',
         component: news
       }
     ,{
         path: '/newsCollection',
-        name: '新闻收藏',
+        name: '健康资讯收藏',
         component: newsCollection
       }
     ,{
         path: '/newsLiuyan',
-        name: '新闻留言',
+        name: '健康资讯留言',
         component: newsLiuyan
       }
     ,{

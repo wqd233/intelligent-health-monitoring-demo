@@ -13,7 +13,7 @@ import java.util.Date;
 import com.utils.DateUtil;
 
 /**
-* 公告
+* 健康公告
 * 后端返回视图实体辅助类
 * （通常后端关联的表或者自定义的字段需要返回使用）
 */
@@ -23,9 +23,9 @@ public class GonggaoView extends GonggaoEntity implements Serializable {
 
 	//当前表
 	/**
-	* 公告类型的值
+	* 健康公告类型的值
 	*/
-	@ColumnInfo(comment="公告类型的字典表值",type="varchar(200)")
+	@ColumnInfo(comment="健康公告类型的字典表值",type="varchar(200)")
 	private String gonggaoValue;
 
 
@@ -48,13 +48,13 @@ public class GonggaoView extends GonggaoEntity implements Serializable {
 
 	//当前表的
 	/**
-	* 获取： 公告类型的值
+	* 获取： 健康公告类型的值
 	*/
 	public String getGonggaoValue() {
 		return gonggaoValue;
 	}
 	/**
-	* 设置： 公告类型的值
+	* 设置： 健康公告类型的值
 	*/
 	public void setGonggaoValue(String gonggaoValue) {
 		this.gonggaoValue = gonggaoValue;

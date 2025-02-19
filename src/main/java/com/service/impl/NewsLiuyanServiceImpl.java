@@ -24,7 +24,7 @@ import com.service.NewsLiuyanService;
 import com.entity.view.NewsLiuyanView;
 
 /**
- * 新闻留言 服务实现类
+ * 健康资讯留言 服务实现类
  */
 @Service("newsLiuyanService")
 @Transactional

@@ -103,7 +103,7 @@
                  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                 <label :style='{"width":"110px","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}'
                        class="layui-form-label">
-                    帖子标题：
+                    知识标题：
                 </label>
                 <div class="layui-input-block">
                     <input class="layui-input main_borderColor"
@@ -116,7 +116,7 @@
                  :style='{"padding":"10px","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 0 10px 0","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"1px","borderWidth":"0 0 1px 0","borderStyle":"solid"}'>
                 <label :style='{"width":"110px","borderColor": "rgba(255, 255, 255, 0)","padding":"0 12px 0 0","backgroundColor":"rgba(255, 255, 255, 0)","fontSize":"15px","color":"#333","textAlign":"left"}'
                        class="layui-form-label">
-                    帖子类型：
+                    知识类型：
                 </label>
                 <div class="layui-input-block">
                     <select name="forumTypes" id="forumTypes" lay-filter="forumTypes">
@@ -241,7 +241,7 @@
         localStorage.setItem("goUtl", "./pages/forum/list.html")
 
         // 下拉框
-        // 帖子类型的查询和初始化
+        // 知识类型的查询和初始化
         forumTypesSelect();
         // 帖子状态的查询和初始化
         forumStateTypesSelect();
@@ -369,7 +369,7 @@
     }
 
 
-    // 帖子类型的查询
+    // 知识类型的查询
     function forumTypesSelect() {
         //填充下拉框选项
         layui.http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=forum_types", "GET", {}, (res) => {

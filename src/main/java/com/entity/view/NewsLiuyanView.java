@@ -13,7 +13,7 @@ import java.util.Date;
 import com.utils.DateUtil;
 
 /**
-* 新闻留言
+* 健康资讯留言
 * 后端返回视图实体辅助类
 * （通常后端关联的表或者自定义的字段需要返回使用）
 */
@@ -23,30 +23,30 @@ public class NewsLiuyanView extends NewsLiuyanEntity implements Serializable {
 
 	//当前表
 
-	//级联表 新闻
+	//级联表 健康资讯
 		/**
-		* 新闻名称
+		* 健康资讯名称
 		*/
 
-		@ColumnInfo(comment="新闻名称",type="varchar(200)")
+		@ColumnInfo(comment="健康资讯名称",type="varchar(200)")
 		private String newsName;
 		/**
-		* 新闻编号
+		* 健康资讯编号
 		*/
 
-		@ColumnInfo(comment="新闻编号",type="varchar(200)")
+		@ColumnInfo(comment="健康资讯编号",type="varchar(200)")
 		private String newsUuidNumber;
 		/**
-		* 新闻照片
+		* 健康资讯照片
 		*/
 
-		@ColumnInfo(comment="新闻照片",type="varchar(200)")
+		@ColumnInfo(comment="健康资讯照片",type="varchar(200)")
 		private String newsPhoto;
 		/**
-		* 新闻视频
+		* 健康资讯视频
 		*/
 
-		@ColumnInfo(comment="新闻视频",type="varchar(200)")
+		@ColumnInfo(comment="健康资讯视频",type="varchar(200)")
 		private String newsVideo;
 		/**
 		* 赞
@@ -61,20 +61,20 @@ public class NewsLiuyanView extends NewsLiuyanEntity implements Serializable {
 		@ColumnInfo(comment="踩",type="int(11)")
 		private Integer caiNumber;
 		/**
-		* 新闻类型
+		* 健康资讯类型
 		*/
-		@ColumnInfo(comment="新闻类型",type="int(11)")
+		@ColumnInfo(comment="健康资讯类型",type="int(11)")
 		private Integer newsTypes;
 			/**
-			* 新闻类型的值
+			* 健康资讯类型的值
 			*/
-			@ColumnInfo(comment="新闻类型的字典表值",type="varchar(200)")
+			@ColumnInfo(comment="健康资讯类型的字典表值",type="varchar(200)")
 			private String newsValue;
 		/**
-		* 新闻热度
+		* 健康资讯热度
 		*/
 
-		@ColumnInfo(comment="新闻热度",type="int(11)")
+		@ColumnInfo(comment="健康资讯热度",type="int(11)")
 		private Integer newsClicknum;
 		/**
 		* 发布时间
@@ -84,10 +84,10 @@ public class NewsLiuyanView extends NewsLiuyanEntity implements Serializable {
 		@ColumnInfo(comment="发布时间",type="timestamp")
 		private Date fabuTime;
 		/**
-		* 新闻详情
+		* 健康资讯详情
 		*/
 
-		@ColumnInfo(comment="新闻详情",type="longtext")
+		@ColumnInfo(comment="健康资讯详情",type="longtext")
 		private String newsContent;
 		/**
 		* 是否上架
@@ -156,55 +156,55 @@ public class NewsLiuyanView extends NewsLiuyanEntity implements Serializable {
 
 
 
-	//级联表的get和set 新闻
+	//级联表的get和set 健康资讯
 
 		/**
-		* 获取： 新闻名称
+		* 获取： 健康资讯名称
 		*/
 		public String getNewsName() {
 			return newsName;
 		}
 		/**
-		* 设置： 新闻名称
+		* 设置： 健康资讯名称
 		*/
 		public void setNewsName(String newsName) {
 			this.newsName = newsName;
 		}
 
 		/**
-		* 获取： 新闻编号
+		* 获取： 健康资讯编号
 		*/
 		public String getNewsUuidNumber() {
 			return newsUuidNumber;
 		}
 		/**
-		* 设置： 新闻编号
+		* 设置： 健康资讯编号
 		*/
 		public void setNewsUuidNumber(String newsUuidNumber) {
 			this.newsUuidNumber = newsUuidNumber;
 		}
 
 		/**
-		* 获取： 新闻照片
+		* 获取： 健康资讯照片
 		*/
 		public String getNewsPhoto() {
 			return newsPhoto;
 		}
 		/**
-		* 设置： 新闻照片
+		* 设置： 健康资讯照片
 		*/
 		public void setNewsPhoto(String newsPhoto) {
 			this.newsPhoto = newsPhoto;
 		}
 
 		/**
-		* 获取： 新闻视频
+		* 获取： 健康资讯视频
 		*/
 		public String getNewsVideo() {
 			return newsVideo;
 		}
 		/**
-		* 设置： 新闻视频
+		* 设置： 健康资讯视频
 		*/
 		public void setNewsVideo(String newsVideo) {
 			this.newsVideo = newsVideo;
@@ -236,13 +236,13 @@ public class NewsLiuyanView extends NewsLiuyanEntity implements Serializable {
 			this.caiNumber = caiNumber;
 		}
 		/**
-		* 获取： 新闻类型
+		* 获取： 健康资讯类型
 		*/
 		public Integer getNewsTypes() {
 			return newsTypes;
 		}
 		/**
-		* 设置： 新闻类型
+		* 设置： 健康资讯类型
 		*/
 		public void setNewsTypes(Integer newsTypes) {
 			this.newsTypes = newsTypes;
@@ -250,26 +250,26 @@ public class NewsLiuyanView extends NewsLiuyanEntity implements Serializable {
 
 
 			/**
-			* 获取： 新闻类型的值
+			* 获取： 健康资讯类型的值
 			*/
 			public String getNewsValue() {
 				return newsValue;
 			}
 			/**
-			* 设置： 新闻类型的值
+			* 设置： 健康资讯类型的值
 			*/
 			public void setNewsValue(String newsValue) {
 				this.newsValue = newsValue;
 			}
 
 		/**
-		* 获取： 新闻热度
+		* 获取： 健康资讯热度
 		*/
 		public Integer getNewsClicknum() {
 			return newsClicknum;
 		}
 		/**
-		* 设置： 新闻热度
+		* 设置： 健康资讯热度
 		*/
 		public void setNewsClicknum(Integer newsClicknum) {
 			this.newsClicknum = newsClicknum;
@@ -289,13 +289,13 @@ public class NewsLiuyanView extends NewsLiuyanEntity implements Serializable {
 		}
 
 		/**
-		* 获取： 新闻详情
+		* 获取： 健康资讯详情
 		*/
 		public String getNewsContent() {
 			return newsContent;
 		}
 		/**
-		* 设置： 新闻详情
+		* 设置： 健康资讯详情
 		*/
 		public void setNewsContent(String newsContent) {
 			this.newsContent = newsContent;

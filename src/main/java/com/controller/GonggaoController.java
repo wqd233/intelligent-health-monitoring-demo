@@ -33,7 +33,7 @@ import com.utils.R;
 import com.alibaba.fastjson.*;
 
 /**
- * 公告
+ * 健康公告
  * 后端接口
  * @author
  * @email
@@ -56,15 +56,15 @@ public class GonggaoController {
     @Autowired
     private DictionaryService dictionaryService;//字典
     @Autowired
-    private ForumService forumService;//论坛
+    private ForumService forumService;//健康知识交流区
     @Autowired
     private JiankangrizhiService jiankangrizhiService;//健康日志
     @Autowired
-    private NewsService newsService;//新闻
+    private NewsService newsService;//健康资讯
     @Autowired
-    private NewsCollectionService newsCollectionService;//新闻收藏
+    private NewsCollectionService newsCollectionService;//健康资讯收藏
     @Autowired
-    private NewsLiuyanService newsLiuyanService;//新闻留言
+    private NewsLiuyanService newsLiuyanService;//健康资讯留言
     @Autowired
     private YonghuService yonghuService;//用户
     @Autowired
@@ -206,9 +206,9 @@ public class GonggaoController {
                         for(List<String> data:dataList){
                             //循环
                             GonggaoEntity gonggaoEntity = new GonggaoEntity();
-//                            gonggaoEntity.setGonggaoName(data.get(0));                    //公告名称 要改的
+//                            gonggaoEntity.setGonggaoName(data.get(0));                    //健康公告名称 要改的
 //                            gonggaoEntity.setGonggaoPhoto("");//详情和图片
-//                            gonggaoEntity.setGonggaoTypes(Integer.valueOf(data.get(0)));   //公告类型 要改的
+//                            gonggaoEntity.setGonggaoTypes(Integer.valueOf(data.get(0)));   //健康公告类型 要改的
 //                            gonggaoEntity.setInsertTime(date);//时间
 //                            gonggaoEntity.setGonggaoContent("");//详情和图片
 //                            gonggaoEntity.setCreateTime(date);//时间

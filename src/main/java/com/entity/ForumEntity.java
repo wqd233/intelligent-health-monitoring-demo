@@ -19,7 +19,7 @@ import com.utils.DateUtil;
 
 
 /**
- * 论坛
+ * 健康知识交流区
  *
  * @author 
  * @email
@@ -54,9 +54,9 @@ public class ForumEntity<T> implements Serializable {
 
 
     /**
-     * 帖子标题
+     * 知识标题
      */
-    @ColumnInfo(comment="帖子标题",type="varchar(200)")
+    @ColumnInfo(comment="知识标题",type="varchar(200)")
     @TableField(value = "forum_name")
 
     private String forumName;
@@ -99,9 +99,9 @@ public class ForumEntity<T> implements Serializable {
 
 
     /**
-     * 帖子类型
+     * 知识类型
      */
-    @ColumnInfo(comment="帖子类型",type="int(11)")
+    @ColumnInfo(comment="知识类型",type="int(11)")
     @TableField(value = "forum_types")
 
     private Integer forumTypes;
@@ -117,11 +117,11 @@ public class ForumEntity<T> implements Serializable {
 
 
     /**
-     * 发帖时间
+     * 发布时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
-    @ColumnInfo(comment="发帖时间",type="timestamp")
+    @ColumnInfo(comment="发布时间",type="timestamp")
     @TableField(value = "insert_time",fill = FieldFill.INSERT)
 
     private Date insertTime;
@@ -163,13 +163,13 @@ public class ForumEntity<T> implements Serializable {
         this.id = id;
     }
     /**
-	 * 获取：帖子标题
+	 * 获取：知识标题
 	 */
     public String getForumName() {
         return forumName;
     }
     /**
-	 * 设置：帖子标题
+	 * 设置：知识标题
 	 */
 
     public void setForumName(String forumName) {
@@ -228,13 +228,13 @@ public class ForumEntity<T> implements Serializable {
         this.superIds = superIds;
     }
     /**
-	 * 获取：帖子类型
+	 * 获取：知识类型
 	 */
     public Integer getForumTypes() {
         return forumTypes;
     }
     /**
-	 * 设置：帖子类型
+	 * 设置：知识类型
 	 */
 
     public void setForumTypes(Integer forumTypes) {
@@ -254,13 +254,13 @@ public class ForumEntity<T> implements Serializable {
         this.forumStateTypes = forumStateTypes;
     }
     /**
-	 * 获取：发帖时间
+	 * 获取：发布时间
 	 */
     public Date getInsertTime() {
         return insertTime;
     }
     /**
-	 * 设置：发帖时间
+	 * 设置：发布时间
 	 */
 
     public void setInsertTime(Date insertTime) {

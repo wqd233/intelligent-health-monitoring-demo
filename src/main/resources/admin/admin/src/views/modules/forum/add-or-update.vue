@@ -10,20 +10,20 @@
             <el-row>
                 <input id="updateId" name="id" type="hidden">
                 <el-col :span="12">
-                    <el-form-item class="input" v-if="type!='info'"  label="帖子标题" prop="forumName">
+                    <el-form-item class="input" v-if="type!='info'"  label="知识标题" prop="forumName">
                         <el-input v-model="ruleForm.forumName"
-                                  placeholder="帖子标题" clearable  :readonly="ro.forumName"></el-input>
+                                  placeholder="知识标题" clearable  :readonly="ro.forumName"></el-input>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item class="input" label="帖子标题" prop="forumName">
+                        <el-form-item class="input" label="知识标题" prop="forumName">
                             <el-input v-model="ruleForm.forumName"
-                                      placeholder="帖子标题" readonly></el-input>
+                                      placeholder="知识标题" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item class="select" v-if="type!='info'"  label="帖子类型" prop="forumTypes">
-                        <el-select v-model="ruleForm.forumTypes" :disabled="ro.forumTypes" placeholder="请选择帖子类型">
+                    <el-form-item class="select" v-if="type!='info'"  label="知识类型" prop="forumTypes">
+                        <el-select v-model="ruleForm.forumTypes" :disabled="ro.forumTypes" placeholder="请选择知识类型">
                             <el-option
                                     v-for="(item,index) in forumTypesOptions"
                                     v-bind:key="item.codeIndex"
@@ -33,9 +33,9 @@
                         </el-select>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item class="input" label="帖子类型" prop="forumValue">
+                        <el-form-item class="input" label="知识类型" prop="forumValue">
                             <el-input v-model="ruleForm.forumValue"
-                                      placeholder="帖子类型" readonly></el-input>
+                                      placeholder="知识类型" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
@@ -105,7 +105,7 @@
                 usersOptions : [],
                 rules: {
                    forumName: [
-                              { required: true, message: '帖子标题不能为空', trigger: 'blur' },
+                              { required: true, message: '知识标题不能为空', trigger: 'blur' },
                           ],
                    yonghuId: [
                               { required: true, message: '用户不能为空', trigger: 'blur' },
@@ -132,7 +132,7 @@
                               }
                           ],
                    forumTypes: [
-                              { required: true, message: '帖子类型不能为空', trigger: 'blur' },
+                              { required: true, message: '知识类型不能为空', trigger: 'blur' },
                               {  pattern: /^[0-9]*$/,
                                   message: '只允许输入整数',
                                   trigger: 'blur'
@@ -146,7 +146,7 @@
                               }
                           ],
                    insertTime: [
-                              { required: true, message: '发帖时间不能为空', trigger: 'blur' },
+                              { required: true, message: '发布时间不能为空', trigger: 'blur' },
                           ],
                    updateTime: [
                               { required: true, message: '修改时间不能为空', trigger: 'blur' },

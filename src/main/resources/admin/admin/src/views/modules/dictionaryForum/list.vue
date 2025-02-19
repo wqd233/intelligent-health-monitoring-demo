@@ -4,8 +4,8 @@
         <div v-if="showFlag">
             <el-form :inline="true" :model="searchForm" class="form-content">
                 <el-row :gutter="20" class="slt" :style="{justifyContent:contents.searchBoxPosition=='1'?'flex-start':contents.searchBoxPosition=='2'?'center':'flex-end'}">
-                    <el-form-item label="帖子类型">
-                        <el-input prefix-icon="el-icon-search" v-model="searchForm.indexNameSearch" placeholder="帖子类型" clearable></el-input>
+                    <el-form-item label="知识类型">
+                        <el-input prefix-icon="el-icon-search" v-model="searchForm.indexNameSearch" placeholder="知识类型" clearable></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button icon="el-icon-search" type="success" @click="search()">查询</el-button>
@@ -52,7 +52,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="codeIndex"
                                       header-align="center"
-                                      label="帖子类型编码">
+                                      label="知识类型编码">
                         <template slot-scope="scope">
                             {{scope.row.codeIndex}}
                         </template>
@@ -60,7 +60,7 @@
                     <el-table-column  :sortable="contents.tableSortable" :align="contents.tableAlign"
                                       prop="indexName"
                                       header-align="center"
-                                      label="帖子类型名称">
+                                      label="知识类型名称">
                         <template slot-scope="scope">
                             {{scope.row.indexName}}
                         </template>
@@ -311,7 +311,7 @@
                 }
                 //本表的
                 params['dicCode'] = "forum_types"//编码名字
-                params['dicName'] = "帖子类型",//汉字名字
+                params['dicName'] = "知识类型",//汉字名字
                 this.$http({
                     url: "dictionary/page",
                     method: "get",

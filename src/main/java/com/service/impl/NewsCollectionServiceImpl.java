@@ -24,7 +24,7 @@ import com.service.NewsCollectionService;
 import com.entity.view.NewsCollectionView;
 
 /**
- * 新闻收藏 服务实现类
+ * 健康资讯收藏 服务实现类
  */
 @Service("newsCollectionService")
 @Transactional

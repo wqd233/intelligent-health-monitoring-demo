@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="utf-8">
-    <title>新闻</title>
+    <title>健康资讯</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="renderer" content="webkit">
@@ -113,7 +113,7 @@
 <div class="prolist">
     <div class="left_nav">
         <dl class="dlx1">
-            <dt>新闻</dt>
+            <dt>健康资讯</dt>
             <dd>USER / CENTER</dd>
         </dl>
         <ul>
@@ -135,23 +135,23 @@
                     </div>
                 </div>
 <!--                <button @click="jump('../news/add.html')" class="layui-btn layui-btn-lg btn-theme sub_backgroundColor" :style='{"padding":"0 15px","boxShadow":"0 0 8px rgba(0,0,0,0)","margin":"0 0 0 10px","borderColor":"#409EFF","color":"#333","borderRadius":"4px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"40px"}'>
-                    <i v-if="true" class="layui-icon">&#xe654;</i> 添加新闻信息
+                    <i v-if="true" class="layui-icon">&#xe654;</i> 添加健康资讯信息
                 </button>-->
             </div>
             <table class="layui-table" lay-skin="nob">
                 <thead>
                     <tr>
                         <!-- 当前表 -->
-                        <th>新闻名称</th>
-                        <th>新闻编号</th>
-                        <th>新闻照片</th>
-                        <th>新闻视频</th>
+                        <th>健康资讯名称</th>
+                        <th>健康资讯编号</th>
+                        <th>健康资讯照片</th>
+                        <th>健康资讯视频</th>
                         <th>赞</th>
                         <th>踩</th>
-                        <th>新闻类型</th>
-                        <th>新闻热度</th>
+                        <th>健康资讯类型</th>
+                        <th>健康资讯热度</th>
                         <th>发布时间</th>
-                        <th>新闻详情</th>
+                        <th>健康资讯详情</th>
                         <th>是否上架</th>
                         <th>录入时间</th>
                         <th>操作</th>
@@ -163,10 +163,10 @@
                         <td>{{item.newsUuidNumber}}</td>
                         <td><img :src="baseUrl+item.newsPhoto" style="width: 100px;height: 100px;object-fit: cover;"></td>
                         <td v-if="item.newsVideo" @click="jump(baseUrl+item.newsVideo)" style="color: red">
-                            新闻视频下载
+                            健康资讯视频下载
                         </td>
                         <td v-else>
-                            无新闻视频
+                            无健康资讯视频
                         </td>
                         <td>{{item.zanNumber}}</td>
                         <td>{{item.caiNumber}}</td>
@@ -350,16 +350,16 @@
 
         // var id = http.getParam('id');
 
-        //新闻类型的动态搜素
+        //健康资讯类型的动态搜素
         $(document).on("click", ".thisTableType-search", function (e) {
             vue.searchForm.newsTypes = $(this).attr('index');
             pageList();
         });
 
 
-            //当前表的 新闻类型 字段 字典表查询
+            //当前表的 健康资讯类型 字段 字典表查询
             newsTypesSelect();
-           //当前表的 新闻类型 字段 字典表查询方法
+           //当前表的 健康资讯类型 字段 字典表查询方法
            function newsTypesSelect() {
                http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types", 'get', {}, function (res) {
                    if(res.code == 0){

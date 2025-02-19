@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import com.entity.view.GonggaoView;
 
 /**
- * 公告 Dao 接口
+ * 健康公告 Dao 接口
  *
  * @author 
  */

@@ -9,26 +9,26 @@
         >
             <el-row>
                 <el-col :span="12">
-                    <el-form-item class="input" v-if="type!='info'"  label="新闻类型编码" prop="codeIndex">
+                    <el-form-item class="input" v-if="type!='info'"  label="健康资讯类型编码" prop="codeIndex">
                         <el-input v-model="ruleForm.codeIndex"
-                                  placeholder="新闻类型编码" clearable  :readonly="ro.codeIndex"></el-input>
+                                  placeholder="健康资讯类型编码" clearable  :readonly="ro.codeIndex"></el-input>
                     </el-form-item>
                     <div v-else>
-                        <el-form-item class="input" label="新闻类型编码" prop="codeIndex">
+                        <el-form-item class="input" label="健康资讯类型编码" prop="codeIndex">
                             <el-input v-model="ruleForm.codeIndex"
-                                      placeholder="新闻类型编码" readonly></el-input>
+                                      placeholder="健康资讯类型编码" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item class="input" v-if="type!='info'"  label="新闻类型" prop="indexName">
+                    <el-form-item class="input" v-if="type!='info'"  label="健康资讯类型" prop="indexName">
                         <el-input v-model="ruleForm.indexName"
-                                  placeholder="新闻类型" clearable  :readonly="ro.indexName"></el-input>
+                                  placeholder="健康资讯类型" clearable  :readonly="ro.indexName"></el-input>
                     </el-form-item>
                     <div v-else>
-                        <el-form-item class="input" label="新闻类型" prop="indexName">
+                        <el-form-item class="input" label="健康资讯类型" prop="indexName">
                             <el-input v-model="ruleForm.indexName"
-                                      placeholder="新闻类型" readonly></el-input>
+                                      placeholder="健康资讯类型" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
@@ -140,14 +140,14 @@
             // 提交
             onSubmit() {
                 if((!this.ruleForm.indexName)){
-                    this.$message.error('新闻类型不能为空');
+                    this.$message.error('健康资讯类型不能为空');
                     return
                 }
                 this.$refs["ruleForm"].validate(valid => {
                     if (valid) {
                         let ruleForm = this.ruleForm;
                         ruleForm["dicCode"]="news_types";
-                        ruleForm["dicName"]="新闻类型";
+                        ruleForm["dicName"]="健康资讯类型";
                         this.$http({
                             url: `dictionary/${!this.ruleForm.id ? "save" : "update"}`,
                             method: "post",

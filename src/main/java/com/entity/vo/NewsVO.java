@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 
 /**
- * 新闻
+ * 健康资讯
  * 手机端接口返回实体辅助类
  * （主要作用去除一些不必要的字段）
  */
@@ -28,7 +28,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-     * 新闻名称
+     * 健康资讯名称
      */
 
     @TableField(value = "news_name")
@@ -36,7 +36,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-     * 新闻编号
+     * 健康资讯编号
      */
 
     @TableField(value = "news_uuid_number")
@@ -44,7 +44,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-     * 新闻照片
+     * 健康资讯照片
      */
 
     @TableField(value = "news_photo")
@@ -52,7 +52,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-     * 新闻视频
+     * 健康资讯视频
      */
 
     @TableField(value = "news_video")
@@ -76,7 +76,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-     * 新闻类型
+     * 健康资讯类型
      */
 
     @TableField(value = "news_types")
@@ -84,7 +84,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-     * 新闻热度
+     * 健康资讯热度
      */
 
     @TableField(value = "news_clicknum")
@@ -102,7 +102,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-     * 新闻详情
+     * 健康资讯详情
      */
 
     @TableField(value = "news_content")
@@ -161,7 +161,7 @@ public class NewsVO implements Serializable {
         this.id = id;
     }
     /**
-	 * 设置：新闻名称
+	 * 设置：健康资讯名称
 	 */
     public String getNewsName() {
         return newsName;
@@ -169,14 +169,14 @@ public class NewsVO implements Serializable {
 
 
     /**
-	 * 获取：新闻名称
+	 * 获取：健康资讯名称
 	 */
 
     public void setNewsName(String newsName) {
         this.newsName = newsName;
     }
     /**
-	 * 设置：新闻编号
+	 * 设置：健康资讯编号
 	 */
     public String getNewsUuidNumber() {
         return newsUuidNumber;
@@ -184,14 +184,14 @@ public class NewsVO implements Serializable {
 
 
     /**
-	 * 获取：新闻编号
+	 * 获取：健康资讯编号
 	 */
 
     public void setNewsUuidNumber(String newsUuidNumber) {
         this.newsUuidNumber = newsUuidNumber;
     }
     /**
-	 * 设置：新闻照片
+	 * 设置：健康资讯照片
 	 */
     public String getNewsPhoto() {
         return newsPhoto;
@@ -199,14 +199,14 @@ public class NewsVO implements Serializable {
 
 
     /**
-	 * 获取：新闻照片
+	 * 获取：健康资讯照片
 	 */
 
     public void setNewsPhoto(String newsPhoto) {
         this.newsPhoto = newsPhoto;
     }
     /**
-	 * 设置：新闻视频
+	 * 设置：健康资讯视频
 	 */
     public String getNewsVideo() {
         return newsVideo;
@@ -214,7 +214,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-	 * 获取：新闻视频
+	 * 获取：健康资讯视频
 	 */
 
     public void setNewsVideo(String newsVideo) {
@@ -251,7 +251,7 @@ public class NewsVO implements Serializable {
         this.caiNumber = caiNumber;
     }
     /**
-	 * 设置：新闻类型
+	 * 设置：健康资讯类型
 	 */
     public Integer getNewsTypes() {
         return newsTypes;
@@ -259,14 +259,14 @@ public class NewsVO implements Serializable {
 
 
     /**
-	 * 获取：新闻类型
+	 * 获取：健康资讯类型
 	 */
 
     public void setNewsTypes(Integer newsTypes) {
         this.newsTypes = newsTypes;
     }
     /**
-	 * 设置：新闻热度
+	 * 设置：健康资讯热度
 	 */
     public Integer getNewsClicknum() {
         return newsClicknum;
@@ -274,7 +274,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-	 * 获取：新闻热度
+	 * 获取：健康资讯热度
 	 */
 
     public void setNewsClicknum(Integer newsClicknum) {
@@ -296,7 +296,7 @@ public class NewsVO implements Serializable {
         this.fabuTime = fabuTime;
     }
     /**
-	 * 设置：新闻详情
+	 * 设置：健康资讯详情
 	 */
     public String getNewsContent() {
         return newsContent;
@@ -304,7 +304,7 @@ public class NewsVO implements Serializable {
 
 
     /**
-	 * 获取：新闻详情
+	 * 获取：健康资讯详情
 	 */
 
     public void setNewsContent(String newsContent) {

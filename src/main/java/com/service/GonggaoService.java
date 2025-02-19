@@ -9,7 +9,7 @@ import org.springframework.lang.Nullable;
 import java.util.List;
 
 /**
- * 公告 服务类
+ * 健康公告 服务类
  */
 public interface GonggaoService extends IService<GonggaoEntity> {
 

@@ -33,7 +33,7 @@ import com.utils.R;
 import com.alibaba.fastjson.*;
 
 /**
- * 论坛
+ * 健康知识交流区
  * 后端接口
  * @author
  * @email
@@ -56,15 +56,15 @@ public class ForumController {
     @Autowired
     private DictionaryService dictionaryService;//字典
     @Autowired
-    private GonggaoService gonggaoService;//公告
+    private GonggaoService gonggaoService;//健康公告
     @Autowired
     private JiankangrizhiService jiankangrizhiService;//健康日志
     @Autowired
-    private NewsService newsService;//新闻
+    private NewsService newsService;//健康资讯
     @Autowired
-    private NewsCollectionService newsCollectionService;//新闻收藏
+    private NewsCollectionService newsCollectionService;//健康资讯收藏
     @Autowired
-    private NewsLiuyanService newsLiuyanService;//新闻留言
+    private NewsLiuyanService newsLiuyanService;//健康资讯留言
     @Autowired
     private YonghuService yonghuService;//用户
     @Autowired
@@ -229,12 +229,12 @@ public class ForumController {
                         for(List<String> data:dataList){
                             //循环
                             ForumEntity forumEntity = new ForumEntity();
-//                            forumEntity.setForumName(data.get(0));                    //帖子标题 要改的
+//                            forumEntity.setForumName(data.get(0));                    //知识标题 要改的
 //                            forumEntity.setYonghuId(Integer.valueOf(data.get(0)));   //用户 要改的
 //                            forumEntity.setUsersId(Integer.valueOf(data.get(0)));   //管理员 要改的
 //                            forumEntity.setForumContent("");//详情和图片
 //                            forumEntity.setSuperIds(Integer.valueOf(data.get(0)));   //父id 要改的
-//                            forumEntity.setForumTypes(Integer.valueOf(data.get(0)));   //帖子类型 要改的
+//                            forumEntity.setForumTypes(Integer.valueOf(data.get(0)));   //知识类型 要改的
 //                            forumEntity.setForumStateTypes(Integer.valueOf(data.get(0)));   //帖子状态 要改的
 //                            forumEntity.setInsertTime(date);//时间
 //                            forumEntity.setUpdateTime(sdf.parse(data.get(0)));          //修改时间 要改的

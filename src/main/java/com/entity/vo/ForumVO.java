@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 
 /**
- * 论坛
+ * 健康知识交流区
  * 手机端接口返回实体辅助类
  * （主要作用去除一些不必要的字段）
  */
@@ -28,7 +28,7 @@ public class ForumVO implements Serializable {
 
 
     /**
-     * 帖子标题
+     * 知识标题
      */
 
     @TableField(value = "forum_name")
@@ -68,7 +68,7 @@ public class ForumVO implements Serializable {
 
 
     /**
-     * 帖子类型
+     * 知识类型
      */
 
     @TableField(value = "forum_types")
@@ -84,7 +84,7 @@ public class ForumVO implements Serializable {
 
 
     /**
-     * 发帖时间
+     * 发布时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
@@ -129,7 +129,7 @@ public class ForumVO implements Serializable {
         this.id = id;
     }
     /**
-	 * 设置：帖子标题
+	 * 设置：知识标题
 	 */
     public String getForumName() {
         return forumName;
@@ -137,7 +137,7 @@ public class ForumVO implements Serializable {
 
 
     /**
-	 * 获取：帖子标题
+	 * 获取：知识标题
 	 */
 
     public void setForumName(String forumName) {
@@ -204,7 +204,7 @@ public class ForumVO implements Serializable {
         this.superIds = superIds;
     }
     /**
-	 * 设置：帖子类型
+	 * 设置：知识类型
 	 */
     public Integer getForumTypes() {
         return forumTypes;
@@ -212,7 +212,7 @@ public class ForumVO implements Serializable {
 
 
     /**
-	 * 获取：帖子类型
+	 * 获取：知识类型
 	 */
 
     public void setForumTypes(Integer forumTypes) {
@@ -234,7 +234,7 @@ public class ForumVO implements Serializable {
         this.forumStateTypes = forumStateTypes;
     }
     /**
-	 * 设置：发帖时间
+	 * 设置：发布时间
 	 */
     public Date getInsertTime() {
         return insertTime;
@@ -242,7 +242,7 @@ public class ForumVO implements Serializable {
 
 
     /**
-	 * 获取：发帖时间
+	 * 获取：发布时间
 	 */
 
     public void setInsertTime(Date insertTime) {

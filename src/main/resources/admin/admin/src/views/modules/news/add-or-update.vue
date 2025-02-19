@@ -10,33 +10,33 @@
             <el-row>
                 <input id="updateId" name="id" type="hidden">
                <el-col :span="12">
-                   <el-form-item class="input" v-if="type!='info'"  label="新闻名称" prop="newsName">
+                   <el-form-item class="input" v-if="type!='info'"  label="健康资讯名称" prop="newsName">
                        <el-input v-model="ruleForm.newsName"
-                                 placeholder="新闻名称" clearable  :readonly="ro.newsName"></el-input>
+                                 placeholder="健康资讯名称" clearable  :readonly="ro.newsName"></el-input>
                    </el-form-item>
                    <div v-else-if="type=='info'">
-                       <el-form-item class="input" label="新闻名称" prop="newsName">
+                       <el-form-item class="input" label="健康资讯名称" prop="newsName">
                            <el-input v-model="ruleForm.newsName"
-                                     placeholder="新闻名称" readonly></el-input>
+                                     placeholder="健康资讯名称" readonly></el-input>
                        </el-form-item>
                    </div>
                </el-col>
                <el-col :span="12">
-                   <el-form-item class="input" v-if="type!='info'"  label="新闻编号" prop="newsUuidNumber">
+                   <el-form-item class="input" v-if="type!='info'"  label="健康资讯编号" prop="newsUuidNumber">
                        <el-input v-model="ruleForm.newsUuidNumber"
-                                 placeholder="新闻编号" clearable  :readonly="ro.newsUuidNumber"></el-input>
+                                 placeholder="健康资讯编号" clearable  :readonly="ro.newsUuidNumber"></el-input>
                    </el-form-item>
                    <div v-else-if="type=='info'">
-                       <el-form-item class="input" label="新闻编号" prop="newsUuidNumber">
+                       <el-form-item class="input" label="健康资讯编号" prop="newsUuidNumber">
                            <el-input v-model="ruleForm.newsUuidNumber"
-                                     placeholder="新闻编号" readonly></el-input>
+                                     placeholder="健康资讯编号" readonly></el-input>
                        </el-form-item>
                    </div>
                </el-col>
                 <el-col :span="12">
-                    <el-form-item class="upload" v-if="type!='info' && !ro.newsPhoto" label="新闻照片" prop="newsPhoto">
+                    <el-form-item class="upload" v-if="type!='info' && !ro.newsPhoto" label="健康资讯照片" prop="newsPhoto">
                         <file-upload
-                            tip="点击上传新闻照片"
+                            tip="点击上传健康资讯照片"
                             action="file/upload"
                             :limit="3"
                             :multiple="true"
@@ -45,15 +45,15 @@
                         ></file-upload>
                     </el-form-item>
                     <div v-else>
-                        <el-form-item v-if="ruleForm.newsPhoto" label="新闻照片" prop="newsPhoto">
+                        <el-form-item v-if="ruleForm.newsPhoto" label="健康资讯照片" prop="newsPhoto">
                             <img style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in (ruleForm.newsPhoto || '').split(',')" :src="$base.url+item" width="100" height="100">
                         </el-form-item>
                     </div>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item class="upload" v-if="type!='info' && !ro.newsVideo" label="新闻视频" prop="newsVideo">
+                    <el-form-item class="upload" v-if="type!='info' && !ro.newsVideo" label="健康资讯视频" prop="newsVideo">
                         <file-upload
-                            tip="点击上传新闻视频"
+                            tip="点击上传健康资讯视频"
                             action="file/upload"
                             :limit="3"
                             :multiple="true"
@@ -62,7 +62,7 @@
                         ></file-upload>
                     </el-form-item>
                     <div v-else>
-                        <el-form-item v-if="ruleForm.newsVideo" label="新闻视频" prop="newsVideo">
+                        <el-form-item v-if="ruleForm.newsVideo" label="健康资讯视频" prop="newsVideo">
                             <video :src="$base.url+ruleForm.newsVideo" width="100" height="100" controls="controls">
                             </video>
                         </el-form-item>
@@ -93,8 +93,8 @@
                    </div>
                </el-col>
                 <el-col :span="12">
-                    <el-form-item class="select" v-if="type!='info'"  label="新闻类型" prop="newsTypes">
-                        <el-select v-model="ruleForm.newsTypes" :disabled="ro.newsTypes" placeholder="请选择新闻类型">
+                    <el-form-item class="select" v-if="type!='info'"  label="健康资讯类型" prop="newsTypes">
+                        <el-select v-model="ruleForm.newsTypes" :disabled="ro.newsTypes" placeholder="请选择健康资讯类型">
                             <el-option
                                 v-for="(item,index) in newsTypesOptions"
                                 v-bind:key="item.codeIndex"
@@ -104,9 +104,9 @@
                         </el-select>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item class="input" label="新闻类型" prop="newsValue">
+                        <el-form-item class="input" label="健康资讯类型" prop="newsValue">
                         <el-input v-model="ruleForm.newsValue"
-                            placeholder="新闻类型" readonly></el-input>
+                            placeholder="健康资讯类型" readonly></el-input>
                         </el-form-item>
                     </div>
                 </el-col>
@@ -128,7 +128,7 @@
                 </el-col>
 
                 <el-col :span="24">
-                    <el-form-item v-if="type!='info'"  label="新闻详情" prop="newsContent">
+                    <el-form-item v-if="type!='info'"  label="健康资讯详情" prop="newsContent">
                         <editor style="min-width: 200px; max-width: 600px;"
                                 v-model="ruleForm.newsContent"
                                 class="editor"
@@ -136,7 +136,7 @@
                         </editor>
                     </el-form-item>
                     <div v-else-if="type=='info'">
-                        <el-form-item v-if="ruleForm.newsContent" label="新闻详情" prop="newsContent">
+                        <el-form-item v-if="ruleForm.newsContent" label="健康资讯详情" prop="newsContent">
                             <span v-html="ruleForm.newsContent"></span>
                         </el-form-item>
                     </div>
@@ -198,16 +198,16 @@
                 shangxiaTypesOptions : [],
                 rules: {
                    newsName: [
-                              { required: true, message: '新闻名称不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯名称不能为空', trigger: 'blur' },
                           ],
                    newsUuidNumber: [
-                              { required: true, message: '新闻编号不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯编号不能为空', trigger: 'blur' },
                           ],
                    newsPhoto: [
-                              { required: true, message: '新闻照片不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯照片不能为空', trigger: 'blur' },
                           ],
                    newsVideo: [
-                              { required: true, message: '新闻视频不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯视频不能为空', trigger: 'blur' },
                           ],
                    zanNumber: [
                               { required: true, message: '赞不能为空', trigger: 'blur' },
@@ -224,14 +224,14 @@
                               }
                           ],
                    newsTypes: [
-                              { required: true, message: '新闻类型不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯类型不能为空', trigger: 'blur' },
                               {  pattern: /^[0-9]*$/,
                                   message: '只允许输入整数',
                                   trigger: 'blur'
                               }
                           ],
                    newsClicknum: [
-                              { required: true, message: '新闻热度不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯热度不能为空', trigger: 'blur' },
                               {  pattern: /^[0-9]*$/,
                                   message: '只允许输入整数',
                                   trigger: 'blur'
@@ -241,7 +241,7 @@
                               { required: true, message: '发布时间不能为空', trigger: 'blur' },
                           ],
                    newsContent: [
-                              { required: true, message: '新闻详情不能为空', trigger: 'blur' },
+                              { required: true, message: '健康资讯详情不能为空', trigger: 'blur' },
                           ],
                    shangxiaTypes: [
                               { required: true, message: '是否上架不能为空', trigger: 'blur' },

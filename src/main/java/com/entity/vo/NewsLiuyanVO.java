@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 
 /**
- * 新闻留言
+ * 健康资讯留言
  * 手机端接口返回实体辅助类
  * （主要作用去除一些不必要的字段）
  */
@@ -28,7 +28,7 @@ public class NewsLiuyanVO implements Serializable {
 
 
     /**
-     * 新闻
+     * 健康资讯
      */
 
     @TableField(value = "news_id")
@@ -105,7 +105,7 @@ public class NewsLiuyanVO implements Serializable {
         this.id = id;
     }
     /**
-	 * 设置：新闻
+	 * 设置：健康资讯
 	 */
     public Integer getNewsId() {
         return newsId;
@@ -113,7 +113,7 @@ public class NewsLiuyanVO implements Serializable {
 
 
     /**
-	 * 获取：新闻
+	 * 获取：健康资讯
 	 */
 
     public void setNewsId(Integer newsId) {

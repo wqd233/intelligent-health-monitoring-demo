@@ -52,17 +52,17 @@ public class YonghuController {
     @Autowired
     private DictionaryService dictionaryService;// 字典
     @Autowired
-    private ForumService forumService;// 论坛
+    private ForumService forumService;// 健康知识交流区
     @Autowired
-    private GonggaoService gonggaoService;// 公告
+    private GonggaoService gonggaoService;// 健康公告
     @Autowired
     private JiankangrizhiService jiankangrizhiService;// 健康日志
     @Autowired
-    private NewsService newsService;// 新闻
+    private NewsService newsService;// 健康资讯
     @Autowired
-    private NewsCollectionService newsCollectionService;// 新闻收藏
+    private NewsCollectionService newsCollectionService;// 健康资讯收藏
     @Autowired
-    private NewsLiuyanService newsLiuyanService;// 新闻留言
+    private NewsLiuyanService newsLiuyanService;// 健康资讯留言
     @Autowired
     private UsersService usersService;// 管理员
 
@@ -414,9 +414,9 @@ public class YonghuController {
                       @RequestParam("subject") String subject,
                       @RequestParam("text") String text,
                       HttpServletRequest request) {
-        String apiKey = "fybjagiuzrqsbajf"; // 替换为你的 API 密钥
-        String fromEmail = "758274530@qq.com"; // 替换为你的发件人邮箱
-        String name = "发信昵称"; // 替换为你的发信昵称
+        String apiKey = "fybjagiuzrqsbajf"; // API 密钥
+        String fromEmail = "758274530@qq.com"; // 发件人邮箱
+        String name = "智能健康监测系统"; // 发信昵称
 
         // 尝试 HTTPS
         String httpsUrl = "https://api.mmp.cc/api/mail?email=" + fromEmail + "&key=" + apiKey +

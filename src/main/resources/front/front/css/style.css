@@ -87,7 +87,7 @@ label {
 	margin: 10px 0 0 0;
 }
 
-/* 首页新闻样式（手风琴） */
+/* 首页健康资讯样式（手风琴） */
 .news-home-container {
 	padding-top: 20px;
 	margin-bottom: 20px;
@@ -184,7 +184,7 @@ label {
 	border-radius: 20px;
 }
 
-/* 论坛 */
+/* 健康知识交流区 */
 .forum-container {
 	width: 980px;
 	margin: 0 auto;
@@ -612,7 +612,7 @@ label {
 	margin-top: 30px;
 }
 
-/* 新闻列表 */
+/* 健康资讯列表 */
 .news-container {
 	text-align: center;
 	margin: 0 auto;
